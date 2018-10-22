@@ -1,0 +1,271 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="EquilibriumApp.Views.SelecaoDeInteresses"
+             xmlns:controls="clr-namespace:XLabs.Forms.Controls;assembly=XLabs.Forms">
+    <ContentPage.Content>
+        <ScrollView>
+            <StackLayout VerticalOptions="Start" Padding="10">
+                <Label Text="Quais áreas da sua vida você deseja melhorar?"
+                        VerticalOptions="StartAndExpand" 
+                        HorizontalOptions="Start" 
+                        FontSize="Large"/>
+
+                <StackLayout>
+
+                    <Label Text="Pessoal" HorizontalOptions="Start" FontSize="Medium"/>
+
+                    <StackLayout Orientation="Horizontal">
+                        <Grid HorizontalOptions="FillAndExpand">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="20"/>
+                                <ColumnDefinition Width="20"/>
+                            </Grid.ColumnDefinitions>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="20"/>
+                                <RowDefinition Height="20"/>
+                                <RowDefinition Height="20"/>
+                            </Grid.RowDefinitions>
+
+                            <controls:CheckBox DefaultText="Corpo" Grid.Column="0" Grid.Row="0"/>
+
+                            <Frame HorizontalOptions="EndAndExpand" Grid.Column="1" Grid.Row="0" Padding="0" Margin="0" BackgroundColor="Transparent">
+                                <Frame.GestureRecognizers>
+                                    <TapGestureRecognizer Tapped="Alert"/>
+                                </Frame.GestureRecognizers>
+                                <Image Source="body_sm" WidthRequest="20" HeightRequest="20" Aspect="AspectFill"/>
+                            </Frame>
+                            <Frame HorizontalOptions="EndAndExpand" Grid.Column="2" Grid.Row="0" Padding="0" Margin="0" BackgroundColor="Transparent">
+                                <Frame.GestureRecognizers>
+                                    <TapGestureRecognizer Tapped="Alert"/>
+                                </Frame.GestureRecognizers>
+                                <Image Source="icon512" WidthRequest="20" HeightRequest="20" Aspect="AspectFill"/>
+                            </Frame>
+
+                            <controls:CheckBox DefaultText="Conhecimento" Grid.Column="0" Grid.Row="1"/>
+                            <Frame HorizontalOptions="EndAndExpand" Grid.Column="1" Grid.Row="1" Padding="0" Margin="0" BackgroundColor="Transparent">
+                                <Frame.GestureRecognizers>
+                                    <TapGestureRecognizer Tapped="Alert"/>
+                                </Frame.GestureRecognizers>
+                                <Image Source="knowledge_sm" WidthRequest="20" HeightRequest="20" Aspect="AspectFill"/>
+                            </Frame>
+                            <Frame HorizontalOptions="EndAndExpand" Grid.Column="2" Grid.Row="1" Padding="0" Margin="0" BackgroundColor="Transparent">
+                                <Frame.GestureRecognizers>
+                                    <TapGestureRecognizer Tapped="Alert"/>
+                                </Frame.GestureRecognizers>
+                                <Image Source="icon512" WidthRequest="20" HeightRequest="20" Aspect="AspectFill"/>
+                            </Frame>
+
+                            <controls:CheckBox DefaultText="Emocional" Grid.Column="0" Grid.Row="2"/>
+
+                            <Frame HorizontalOptions="EndAndExpand" Grid.Column="1" Grid.Row="2" Padding="0" Margin="0" BackgroundColor="Transparent">
+                                <Frame.GestureRecognizers>
+                                    <TapGestureRecognizer Tapped="Alert"/>
+                                </Frame.GestureRecognizers>
+                                <Image Source="emotional_sm" WidthRequest="20" HeightRequest="20" Aspect="AspectFill"/>
+                            </Frame>
+                            <Frame HorizontalOptions="EndAndExpand" Grid.Column="2" Grid.Row="2" Padding="0" Margin="0" BackgroundColor="Transparent">
+                                <Frame.GestureRecognizers>
+                                    <TapGestureRecognizer Tapped="Alert"/>
+                                </Frame.GestureRecognizers>
+                                <Image Source="icon512" WidthRequest="20" HeightRequest="20" Aspect="AspectFill"/>
+                            </Frame>
+
+                        </Grid>
+                    </StackLayout>
+                </StackLayout>
+                <StackLayout>
+
+                    <Label Text="Profissional" HorizontalOptions="Start" FontSize="Medium"/>
+
+                    <Grid HorizontalOptions="FillAndExpand">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="20"/>
+                            <ColumnDefinition Width="20"/>
+                        </Grid.ColumnDefinitions>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="20"/>
+                            <RowDefinition Height="20"/>
+                            <RowDefinition Height="20"/>
+                        </Grid.RowDefinitions>
+
+                        <controls:CheckBox DefaultText="Dinheiro" Grid.Column="0" Grid.Row="0" />
+
+                        <Frame HorizontalOptions="CenterAndExpand" Grid.Column="1" Grid.Row="0" Padding="0" Margin="0" BackgroundColor="Transparent">
+                            <Frame.GestureRecognizers>
+                                <TapGestureRecognizer Tapped="Alert"/>
+                            </Frame.GestureRecognizers>
+                            <Image Source="money_sm" WidthRequest="20" HeightRequest="20" Aspect="AspectFill"/>
+                        </Frame>
+                        <Frame HorizontalOptions="CenterAndExpand" Grid.Column="2" Grid.Row="0" Padding="0" Margin="0" BackgroundColor="Transparent">
+                            <Frame.GestureRecognizers>
+                                <TapGestureRecognizer Tapped="Alert"/>
+                            </Frame.GestureRecognizers>
+                            <Image Source="icon512" WidthRequest="20" HeightRequest="20" Aspect="AspectFill"/>
+                        </Frame>
+
+                        <controls:CheckBox DefaultText="Trabalho" Grid.Column="0" Grid.Row="1"/>
+                        <Frame HorizontalOptions="CenterAndExpand" Grid.Column="1" Grid.Row="1" Padding="0" Margin="0" BackgroundColor="Transparent">
+                            <Frame.GestureRecognizers>
+                                <TapGestureRecognizer Tapped="Alert"/>
+                            </Frame.GestureRecognizers>
+                            <Image Source="volunteering_sm" WidthRequest="20" HeightRequest="20" Aspect="AspectFill"/>
+                        </Frame>
+                        <Frame HorizontalOptions="CenterAndExpand" Grid.Column="2" Grid.Row="1" Padding="0" Margin="0" BackgroundColor="Transparent">
+                            <Frame.GestureRecognizers>
+                                <TapGestureRecognizer Tapped="Alert"/>
+                            </Frame.GestureRecognizers>
+                            <Image Source="icon512" WidthRequest="20" HeightRequest="20" Aspect="AspectFill"/>
+                        </Frame>
+
+                        <controls:CheckBox DefaultText="Voluntariado" Grid.Column="0" Grid.Row="2"/>
+                        <Frame HorizontalOptions="CenterAndExpand" Grid.Column="1" Grid.Row="2" Padding="0" Margin="0" BackgroundColor="Transparent">
+                            <Frame.GestureRecognizers>
+                                <TapGestureRecognizer Tapped="Alert"/>
+                            </Frame.GestureRecognizers>
+                            <Image Source="family_sm" WidthRequest="20" HeightRequest="20" Aspect="AspectFill"/>
+                        </Frame>
+                        <Frame HorizontalOptions="CenterAndExpand" Grid.Column="2" Grid.Row="2" Padding="0" Margin="0" BackgroundColor="Transparent">
+                            <Frame.GestureRecognizers>
+                                <TapGestureRecognizer Tapped="Alert"/>
+                            </Frame.GestureRecognizers>
+                            <Image Source="icon512" WidthRequest="20" HeightRequest="20" Aspect="AspectFill"/>
+                        </Frame>
+                    </Grid>
+                </StackLayout>
+                <StackLayout>
+
+                    <Label Text="Relacionamentos" HorizontalOptions="Start" FontSize="Medium"/>
+
+                    <Grid HorizontalOptions="FillAndExpand">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="20"/>
+                            <ColumnDefinition Width="20"/>
+                        </Grid.ColumnDefinitions>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="20"/>
+                            <RowDefinition Height="20"/>
+                            <RowDefinition Height="20"/>
+                        </Grid.RowDefinitions>
+
+                        <controls:CheckBox DefaultText="Família" Grid.Column="0" Grid.Row="0"/>
+                        <Frame HorizontalOptions="CenterAndExpand" Grid.Column="1" Grid.Row="0" Padding="0" Margin="0" BackgroundColor="Transparent">
+                            <Frame.GestureRecognizers>
+                                <TapGestureRecognizer Tapped="Alert"/>
+                            </Frame.GestureRecognizers>
+                            <Image Source="family_sm" WidthRequest="20" HeightRequest="20" Aspect="AspectFill"/>
+                        </Frame>
+                        <Frame HorizontalOptions="CenterAndExpand" Grid.Column="2" Grid.Row="0" Padding="0" Margin="0" BackgroundColor="Transparent">
+                            <Frame.GestureRecognizers>
+                                <TapGestureRecognizer Tapped="Alert"/>
+                            </Frame.GestureRecognizers>
+                            <Image Source="icon512" WidthRequest="20" HeightRequest="20" Aspect="AspectFill"/>
+                        </Frame>
+
+                        <controls:CheckBox DefaultText="Amor" Grid.Column="0" Grid.Row="1"/>
+                        <Frame HorizontalOptions="CenterAndExpand" Grid.Column="1" Grid.Row="1" Padding="0" Margin="0" BackgroundColor="Transparent">
+                            <Frame.GestureRecognizers>
+                                <TapGestureRecognizer Tapped="Alert"/>
+                            </Frame.GestureRecognizers>
+                            <Image Source="love_sm" WidthRequest="20" HeightRequest="20" Aspect="AspectFill"/>
+                        </Frame>
+                        <Frame HorizontalOptions="CenterAndExpand" Grid.Column="2" Grid.Row="1" Padding="0" Margin="0" BackgroundColor="Transparent">
+                            <Frame.GestureRecognizers>
+                                <TapGestureRecognizer Tapped="Alert"/>
+                            </Frame.GestureRecognizers>
+                            <Image Source="icon512" WidthRequest="20" HeightRequest="20" Aspect="AspectFill"/>
+                        </Frame>
+
+                        <controls:CheckBox DefaultText="Amigos" Grid.Column="0" Grid.Row="2"/>
+                        <Frame HorizontalOptions="CenterAndExpand" Grid.Column="1" Grid.Row="2" Padding="0" Margin="0" BackgroundColor="Transparent">
+                            <Frame.GestureRecognizers>
+                                <TapGestureRecognizer Tapped="Alert"/>
+                            </Frame.GestureRecognizers>
+                            <Image Source="friends_sm" WidthRequest="20" HeightRequest="20" Aspect="AspectFill"/>
+                        </Frame>
+                        <Frame HorizontalOptions="CenterAndExpand" Grid.Column="2" Grid.Row="2" Padding="0" Margin="0" BackgroundColor="Transparent">
+                            <Frame.GestureRecognizers>
+                                <TapGestureRecognizer Tapped="Alert"/>
+                            </Frame.GestureRecognizers>
+                            <Image Source="icon512" WidthRequest="20" HeightRequest="20" Aspect="AspectFill"/>
+                        </Frame>
+                    </Grid>
+                </StackLayout>
+                <StackLayout>
+                    <Label Text="Qualidade de Vida" HorizontalOptions="Start" FontSize="Medium"/>
+
+                    <Grid HorizontalOptions="FillAndExpand">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="20"/>
+                            <ColumnDefinition Width="20"/>
+                        </Grid.ColumnDefinitions>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="20"/>
+                            <RowDefinition Height="20"/>
+                            <RowDefinition Height="20"/>
+                        </Grid.RowDefinitions>
+
+                        <controls:CheckBox DefaultText="Diversão" Grid.Column="0" Grid.Row="0"/>
+                        <Frame HorizontalOptions="CenterAndExpand" Grid.Column="1" Grid.Row="0" Padding="0" Margin="0" BackgroundColor="Transparent">
+                            <Frame.GestureRecognizers>
+                                <TapGestureRecognizer Tapped="Alert"/>
+                            </Frame.GestureRecognizers>
+                            <Image Source="fun_sm" WidthRequest="20" HeightRequest="20" Aspect="AspectFill"/>
+                        </Frame>
+                        <Frame HorizontalOptions="CenterAndExpand" Grid.Column="2" Grid.Row="0" Padding="0" Margin="0" BackgroundColor="Transparent">
+                            <Frame.GestureRecognizers>
+                                <TapGestureRecognizer Tapped="Alert"/>
+                            </Frame.GestureRecognizers>
+                            <Image Source="icon512" WidthRequest="20" HeightRequest="20" Aspect="AspectFill"/>
+                        </Frame>
+
+                        <controls:CheckBox DefaultText="Espiritualidade" Grid.Column="0" Grid.Row="1"/>
+                        <Frame HorizontalOptions="CenterAndExpand" Grid.Column="1" Grid.Row="1" Padding="0" Margin="0" BackgroundColor="Transparent">
+                            <Frame.GestureRecognizers>
+                                <TapGestureRecognizer Tapped="Alert"/>
+                            </Frame.GestureRecognizers>
+                            <Image Source="spirituality_sm" WidthRequest="20" HeightRequest="20" Aspect="AspectFill"/>
+                        </Frame>
+                        <Frame HorizontalOptions="CenterAndExpand" Grid.Column="2" Grid.Row="1" Padding="0" Margin="0" BackgroundColor="Transparent">
+                            <Frame.GestureRecognizers>
+                                <TapGestureRecognizer Tapped="Alert"/>
+                            </Frame.GestureRecognizers>
+                            <Image Source="icon512" WidthRequest="20" HeightRequest="20" Aspect="AspectFill"/>
+                        </Frame>
+
+                        <controls:CheckBox DefaultText="Plenitude" Grid.Column="0" Grid.Row="2"/>
+                        <Frame HorizontalOptions="CenterAndExpand" Grid.Column="1" Grid.Row="2" Padding="0" Margin="0" BackgroundColor="Transparent" >
+                            <Frame.GestureRecognizers>
+                                <TapGestureRecognizer Tapped="Alert"/>
+                            </Frame.GestureRecognizers>
+                            <Image Source="welfare_sm" Aspect="AspectFill"/>
+                        </Frame>
+                        <Frame HorizontalOptions="CenterAndExpand" Grid.Column="2" Grid.Row="2" Padding="0" Margin="0" BackgroundColor="Transparent">
+                            <Frame.GestureRecognizers>
+                                <TapGestureRecognizer Tapped="Alert"/>
+                            </Frame.GestureRecognizers>
+                            <Image Source="icon512"/>
+                        </Frame>
+                    </Grid>
+                </StackLayout>
+                <StackLayout Padding="15">
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="30"/>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="30"/>
+                        </Grid.ColumnDefinitions>
+                        <Grid.RowDefinitions>
+                            <RowDefinition/>
+                        </Grid.RowDefinitions>
+                        <Button Text="Entrar" Clicked="Alert" BackgroundColor= "Orange" TextColor="White" FontAttributes="Bold" CornerRadius="15" Grid.Row="0" Grid.Column="1" VerticalOptions="EndAndExpand"/>
+                    </Grid>
+                </StackLayout>
+            </StackLayout>
+        </ScrollView>
+    </ContentPage.Content>
+</ContentPage>

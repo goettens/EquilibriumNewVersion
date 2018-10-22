@@ -1,0 +1,86 @@
+{
+  "project_info": {
+    "project_number": "830444312686",
+    "firebase_url": "https://roda-da-vida-app.firebaseio.com",
+    "project_id": "roda-da-vida-app",
+    "storage_bucket": "roda-da-vida-app.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:830444312686:android:e64cbb047b079868",
+        "android_client_info": {
+          "package_name": "com.onedaycode.johnhaste.rodadavida"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "830444312686-lrok0bmfu88culs5mfo8r2jgi2p8lhv8.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.onedaycode.johnhaste.rodadavida",
+            "certificate_hash": "7b41f69289c99a338aa53431af5c843d9540a12e"
+          }
+        },
+        {
+          "client_id": "830444312686-mg7one1rq330auu39u8bugq3b4gd59mr.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAxbFYuP-hqqA1Bv1vBxKEfDLD56bj4qYY"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "830444312686-mg7one1rq330auu39u8bugq3b4gd59mr.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:830444312686:android:82ed31fd86152712",
+        "android_client_info": {
+          "package_name": "com.twodaycode.josephguilherme.equilibrium"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "830444312686-mg7one1rq330auu39u8bugq3b4gd59mr.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAxbFYuP-hqqA1Bv1vBxKEfDLD56bj4qYY"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
