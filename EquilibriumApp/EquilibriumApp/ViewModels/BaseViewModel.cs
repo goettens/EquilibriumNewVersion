@@ -12,9 +12,11 @@ namespace EquilibriumApp.ViewModels
         public BaseViewModel()
         {
             NavigationService = AppContainer.Instance.Resolve<INavigationService>();
+            
         }
 
         public INavigationService NavigationService { get; }
+        public IDialogService DialogService { get; }
 
         private bool isBusy;
         public bool IsBusy

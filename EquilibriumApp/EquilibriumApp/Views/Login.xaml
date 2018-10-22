@@ -7,8 +7,8 @@
         <StackLayout Padding="15" Spacing="15" BackgroundColor="White" VerticalOptions="CenterAndExpand">
             <Image Source="IconeOficial.png" Scale="0.7" HorizontalOptions="Center" VerticalOptions="StartAndExpand"/>
             <Label Text="Equilibrium App" HorizontalOptions="CenterAndExpand" FontAttributes="Bold" />
-            <Entry Placeholder="Usuário"  Keyboard="Email" x:Name="txtEmail"/>
-            <Entry Placeholder="Senha" IsPassword="True" x:Name="txtPassword"/>
+            <Entry Placeholder="Usuário"  Keyboard="Email" Text="{Binding Email, Mode=TwoWay}"/>
+            <Entry Placeholder="Senha" IsPassword="True" Text="{Binding Password, Mode=TwoWay}"/>
             <Grid Padding="15">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="2*"/>
@@ -21,7 +21,7 @@
 
                 <Switch IsToggled="false" HorizontalOptions="Start" VerticalOptions="Center" Grid.Row="0" Grid.Column="0" />
                 <Label Text="Lembrar-me" Grid.Row="0" Grid.Column="1" VerticalOptions="Start" HorizontalOptions="Start"/>
-                <Button Text="Entrar" Clicked="Login_Cicked" BackgroundColor= "Orange" TextColor="White" FontAttributes="Bold" CornerRadius="15" Grid.Row="0" Grid.Column="2" VerticalOptions="EndAndExpand"/>
+                <Button Text="Entrar" Command="{Binding LoginCommand}" BackgroundColor= "Orange" TextColor="White" FontAttributes="Bold" CornerRadius="15" Grid.Row="0" Grid.Column="2" VerticalOptions="EndAndExpand"/>
 
             </Grid>
             <Grid Padding="15" VerticalOptions="StartAndExpand">
