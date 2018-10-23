@@ -1,17 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Android.App;
-using Android.Content;
-using Android.OS;
-using Android.Runtime;
-using Android.Views;
-using Android.Widget;
+﻿using System.Threading.Tasks;
 using EquilibriumApp.Services;
 using Firebase.Auth;
 using Xamarin.Forms;
+using Firebase;
 
 [assembly: Dependency(typeof(EquilibriumApp.Droid.Services.FirebaseAuthenticator))]
 namespace EquilibriumApp.Droid.Services
@@ -22,6 +13,13 @@ namespace EquilibriumApp.Droid.Services
         {
             var user = await FirebaseAuth.Instance.
                             SignInWithEmailAndPasswordAsync(email, password);
+            var token = await user.User.GetIdTokenAsync(false);
+            return token.Token;
+        }
+
+        public async Task<string> CreateLogin(string email, string nome, string password, string confirmPassword)
+        {
+            var user = await FirebaseAuth.Instance.CreateUserWithEmailAndPasswordAsync(email, password);
             var token = await user.User.GetIdTokenAsync(false);
             return token.Token;
         }

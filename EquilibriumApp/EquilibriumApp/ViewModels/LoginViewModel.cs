@@ -6,6 +6,8 @@ using System.Collections.ObjectModel;
 using System.Threading.Tasks;
 using System.Windows.Input;
 using Xamarin.Forms;
+using Firebase.Database;
+using Firebase.Database.Query;
 
 namespace EquilibriumApp.ViewModels
 {
@@ -39,6 +41,16 @@ namespace EquilibriumApp.ViewModels
                     if (!string.IsNullOrEmpty(token))
                     {
                         await DialogService.ShowMessage(token, token);
+                        var firebase = new FirebaseClient(@"https://roda-da-vida-app.firebaseio.com/", new FirebaseOptions
+                        {
+                            AuthTokenAsyncFactory = () => Task.FromResult(token)
+                        });
+
+                        var areaNome = await firebase.Child("area").OrderByKey().StartAt("003").LimitToFirst(3).OnceAsync<Area>();
+                        foreach(var i in areaNome)
+                        {
+                            string a = i.ToString();
+                        }
                         await NavigationService.NavigateToAsync<SelecaoDeInteressesViewModel>();
                     }
                     else
