@@ -46,8 +46,8 @@ namespace EquilibriumApp.ViewModels
                             AuthTokenAsyncFactory = () => Task.FromResult(token)
                         });
 
-                        var areaNome = await firebase.Child("area").OrderByKey().StartAt("003").LimitToFirst(3).OnceAsync<Area>();
-                        foreach(var i in areaNome)
+                        var comentarios = await firebase.Child("comments").Child("-LOz2J7AEMS5MS4Ce2lf").OrderByKey().OnceAsync<Comment>();
+                        foreach(var i in comentarios)
                         {
                             string a = i.ToString();
                         }
