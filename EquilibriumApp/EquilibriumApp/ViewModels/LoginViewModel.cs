@@ -38,7 +38,7 @@ namespace EquilibriumApp.ViewModels
                     string token = await auth.LoginWithEmailPassword(Email, Password);
                     if (!string.IsNullOrEmpty(token))
                     {
-                        //await DialogService.ShowMessage(token, token);
+                        await DialogService.ShowMessage(token, token);
                         await NavigationService.NavigateToAsync<SelecaoDeInteressesViewModel>();
                     }
                     else
@@ -46,7 +46,7 @@ namespace EquilibriumApp.ViewModels
                 }
                 catch(Exception e)
                 {
-                    //await DialogService.ShowMessage("Error", e.ToString());
+                    await DialogService.ShowMessage("Error", e.ToString());
                 }
             }
 

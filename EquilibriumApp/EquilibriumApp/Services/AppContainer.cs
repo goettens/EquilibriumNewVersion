@@ -51,6 +51,7 @@ namespace EquilibriumApp.Services
         private void LoadServices(ContainerBuilder builder)
         {
             builder.RegisterType<NavigationService>().As<INavigationService>().SingleInstance();
+            builder.RegisterType<DialogService>().As<IDialogService>().SingleInstance();
         }
 
         public void LoadViewModel(BindableObject view)

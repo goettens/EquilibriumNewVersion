@@ -12,7 +12,7 @@ namespace EquilibriumApp.ViewModels
         public BaseViewModel()
         {
             NavigationService = AppContainer.Instance.Resolve<INavigationService>();
-            
+            DialogService = AppContainer.Instance.Resolve<IDialogService>();
         }
 
         public INavigationService NavigationService { get; }
