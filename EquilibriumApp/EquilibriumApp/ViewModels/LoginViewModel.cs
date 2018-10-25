@@ -40,7 +40,6 @@ namespace EquilibriumApp.ViewModels
                     string token = await auth.LoginWithEmailPassword(Email, Password);
                     if (!string.IsNullOrEmpty(token))
                     {
-                        await DialogService.ShowMessage(token, token);
                         var firebase = new FirebaseClient(@"https://roda-da-vida-app.firebaseio.com/", new FirebaseOptions
                         {
                             AuthTokenAsyncFactory = () => Task.FromResult(token)
