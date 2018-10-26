@@ -12,19 +12,18 @@ namespace EquilibriumApp.Services.Common
 {
     public class NavigationService : INavigationService
     {
-        //private readonly IFirebaseAuthenticator FirebaseAuthenticator;
-
+        ISettingsService SettingsService;
         public NavigationService()
         {
-            //this.FirebaseAuthenticator = firebaseAuthenticator ?? throw new ArgumentNullException(nameof(firebaseAuthenticator));
+            SettingsService = AppContainer.Instance.Resolve<ISettingsService>();
         }
 
         public async Task InitializeAsync()
         {
             
-            if ((Application.Current as App).Authenticated)
-                await NavigateToAsync<SelecaoDeInteressesViewModel>();
-            else
+            //if (SettingsService.AccessToken != null)
+            //    await NavigateToAsync<SelecaoDeInteressesViewModel>();
+            //else
                 await NavigateToAsync<LoginViewModel>();
         }
 
