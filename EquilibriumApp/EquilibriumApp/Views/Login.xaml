@@ -35,7 +35,7 @@
                     <RowDefinition/>
                 </Grid.RowDefinitions>
 
-                <Button Text="Esqueci a senha" BackgroundColor="Transparent" Grid.Row="0" Grid.Column="0" Clicked="Alert"/>
+                <Button Text="Esqueci a senha" BackgroundColor="Transparent" Grid.Row="0" Grid.Column="0" Command="{Binding RecuperarSenhaCommand}"/>
                 <Button Text="Criar uma conta" BackgroundColor="Transparent" Grid.Row="0" Grid.Column="1" Command="{Binding CadastrarCommand}"/>
 
             </Grid>
