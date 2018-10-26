@@ -89,16 +89,14 @@ namespace EquilibriumApp.ViewModels
                         SettingsService.Password = SettingsService.LembrarMe ? Password : null;
 
                         SetFirebase();
-                        var comentarios = await Firebase.Child("comments").Child("-LOz2J7AEMS5MS4Ce2lf").OrderByKey().OnceAsync<Comment>();
+                        //var comentarios = await Firebase.Child("comments").Child("-LOz2J7AEMS5MS4Ce2lf").OrderByKey().OnceAsync<Comment>();
 
                         await NavigationService.NavigateToAsync<SelecaoDeInteressesViewModel>();
                     }
-                    else
-                        await DialogService.ShowMessage("Usuário não cadastrado", "Erro");
                 }
                 catch(Exception e)
                 {
-                    await DialogService.ShowMessage("Error", e.ToString());
+                    await DialogService.ShowMessage("Usuário ou Senha incorretos", "Erro");
                 }
             }
 
