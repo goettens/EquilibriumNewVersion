@@ -52,6 +52,9 @@ namespace EquilibriumApp.Services
         {
             builder.RegisterType<NavigationService>().As<INavigationService>().SingleInstance();
             builder.RegisterType<DialogService>().As<IDialogService>().SingleInstance();
+
+            var settings = new SettingsService();
+            builder.Register(c => settings).As<ISettingsService>().SingleInstance();
         }
 
         public void LoadViewModel(BindableObject view)

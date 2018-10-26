@@ -18,17 +18,62 @@ namespace EquilibriumApp.ViewModels
             Title = "Login";
             CadastrarCommand = new Command(async () => await NavigationService.NavigateToAsync<CadastroViewModel>());
             LoginCommand = new Command(async () => await FazerLogin());
+            LembrarMe = SettingsService.LembrarMe;
         }
 
         public User UsuarioSelecionado;
 
         public ICommand CadastrarCommand { get; set; }
         public ICommand LoginCommand { get; set; }
-        
         public ICommand AceitarUsuarioCmd { get; set; }
 
-        public string Email { get; set; }
-        public string Password { get; set; }
+        private string email;
+        public string Email
+        {
+            get
+            {
+                return email;
+            }
+            set
+            {
+                SetProperty(ref email, value, nameof(Email));
+            }
+        }
+
+        private string password;
+        public string Password
+        {
+            get
+            {
+                return password;
+            }
+            set
+            {
+                SetProperty(ref password, value, nameof(Password));
+            }
+        }
+
+        private bool lembrarMe;
+        public bool LembrarMe
+        {
+            get
+            {
+                return lembrarMe;
+            }
+            set
+            {
+                SettingsService.LembrarMe = value;
+                SetProperty(ref lembrarMe, value, nameof(LembrarMe));
+            }
+        }
+
+        public override Task InitializeAsync(object navigationData)
+        {
+
+            Email = SettingsService.LembrarMe ? SettingsService.Email : "";
+            Password = SettingsService.LembrarMe ? SettingsService.Password : "";
+            return base.InitializeAsync(navigationData);
+        }
 
         public async Task FazerLogin()
         {
@@ -37,24 +82,26 @@ namespace EquilibriumApp.ViewModels
                 try
                 {
                     var auth = DependencyService.Get<IFirebaseAuthenticator>();
-                    string token = await auth.LoginWithEmailPassword(Email, Password);
-                    if (!string.IsNullOrEmpty(token))
+                    SettingsService.AccessToken = await auth.LoginWithEmailPassword(Email, Password);
+                    if (!string.IsNullOrEmpty(SettingsService.AccessToken))
                     {
-                        await DialogService.ShowMessage(token, token);
-                        var firebase = new FirebaseClient(@"https://roda-da-vida-app.firebaseio.com/", new FirebaseOptions
+                        var firebase = new FirebaseClient(SettingsService.DefaultAPIUrl, new FirebaseOptions
                         {
-                            AuthTokenAsyncFactory = () => Task.FromResult(token)
+                            AuthTokenAsyncFactory = () => Task.FromResult(SettingsService.AccessToken)
                         });
 
+                        SettingsService.Email = SettingsService.LembrarMe ? Email : null;
+                        SettingsService.Password = SettingsService.LembrarMe ? Password : null;
+
                         var comentarios = await firebase.Child("comments").Child("-LOz2J7AEMS5MS4Ce2lf").OrderByKey().OnceAsync<Comment>();
-                        foreach(var i in comentarios)
+                        foreach (var i in comentarios)
                         {
                             string a = i.ToString();
                         }
                         await NavigationService.NavigateToAsync<SelecaoDeInteressesViewModel>();
                     }
                     else
-                        await DialogService.ShowMessage("Error", "Error");
+                        await DialogService.ShowMessage("Usuário não cadastrado", "Erro");
                 }
                 catch(Exception e)
                 {

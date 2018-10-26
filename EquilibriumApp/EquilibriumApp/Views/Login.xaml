@@ -2,6 +2,8 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="EquilibriumApp.Views.Login"
+             NavigationPage.HasNavigationBar="False"
+             NavigationPage.HasBackButton="False"
              Title="{Binding Title}">
     <ContentPage.Content>
         <StackLayout Padding="15" Spacing="15" BackgroundColor="White" VerticalOptions="CenterAndExpand">
@@ -19,7 +21,7 @@
                     <RowDefinition/>
                 </Grid.RowDefinitions>
 
-                <Switch IsToggled="false" HorizontalOptions="Start" VerticalOptions="Center" Grid.Row="0" Grid.Column="0" />
+                <Switch IsToggled="{Binding LembrarMe, Mode=TwoWay}" HorizontalOptions="Start" VerticalOptions="Center" Grid.Row="0" Grid.Column="0" />
                 <Label Text="Lembrar-me" Grid.Row="0" Grid.Column="1" VerticalOptions="Start" HorizontalOptions="Start"/>
                 <Button Text="Entrar" Command="{Binding LoginCommand}" BackgroundColor= "Orange" TextColor="White" FontAttributes="Bold" CornerRadius="15" Grid.Row="0" Grid.Column="2" VerticalOptions="EndAndExpand"/>
 
