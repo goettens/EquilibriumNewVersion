@@ -1,5 +1,6 @@
 ﻿using EquilibriumApp.Services;
 using EquilibriumApp.Services.Common;
+using Firebase.Database;
 using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
@@ -19,6 +20,27 @@ namespace EquilibriumApp.ViewModels
         public INavigationService NavigationService { get; }
         public IDialogService DialogService { get; }
         public ISettingsService SettingsService { get; set; }
+
+        public FirebaseClient Firebase { get; set; }
+
+        public bool SetFirebase()
+        {
+            try
+            {
+                Firebase = new FirebaseClient(SettingsService.DefaultAPIUrl, new FirebaseOptions
+                {
+                    AuthTokenAsyncFactory = () => Task.FromResult(SettingsService.AccessToken)
+                });
+            }
+            catch(Exception Ex)
+            {
+                Console.WriteLine(Ex);
+                DialogService.ShowMessage("Não foi possível fazer o login", "Erro");
+            }
+
+            return Firebase != null ? true : false;
+        }
+
 
         private bool isBusy;
         public bool IsBusy

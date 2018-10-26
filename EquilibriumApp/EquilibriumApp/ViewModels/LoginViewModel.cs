@@ -1,12 +1,9 @@
 ﻿using EquilibriumApp.Models;
-using EquilibriumApp.Services;
-using EquilibriumApp.Services.Common;
+using EquilibriumApp.Services.Common.Authentication;
 using System;
-using System.Collections.ObjectModel;
 using System.Threading.Tasks;
 using System.Windows.Input;
 using Xamarin.Forms;
-using Firebase.Database;
 using Firebase.Database.Query;
 
 namespace EquilibriumApp.ViewModels
@@ -17,6 +14,7 @@ namespace EquilibriumApp.ViewModels
         {
             Title = "Login";
             CadastrarCommand = new Command(async () => await NavigationService.NavigateToAsync<CadastroViewModel>());
+            RecuperarSenhaCommand = new Command(async () => await NavigationService.NavigateToAsync<RecuperarSenhaViewModel>());
             LoginCommand = new Command(async () => await FazerLogin());
             LembrarMe = SettingsService.LembrarMe;
         }
@@ -26,6 +24,7 @@ namespace EquilibriumApp.ViewModels
         public ICommand CadastrarCommand { get; set; }
         public ICommand LoginCommand { get; set; }
         public ICommand AceitarUsuarioCmd { get; set; }
+        public ICommand RecuperarSenhaCommand { get; set; }
 
         private string email;
         public string Email
@@ -82,30 +81,22 @@ namespace EquilibriumApp.ViewModels
                 try
                 {
                     var auth = DependencyService.Get<IFirebaseAuthenticator>();
+                    SettingsService.AccessToken = null;
                     SettingsService.AccessToken = await auth.LoginWithEmailPassword(Email, Password);
                     if (!string.IsNullOrEmpty(SettingsService.AccessToken))
                     {
-                        var firebase = new FirebaseClient(SettingsService.DefaultAPIUrl, new FirebaseOptions
-                        {
-                            AuthTokenAsyncFactory = () => Task.FromResult(SettingsService.AccessToken)
-                        });
-
                         SettingsService.Email = SettingsService.LembrarMe ? Email : null;
                         SettingsService.Password = SettingsService.LembrarMe ? Password : null;
 
-                        var comentarios = await firebase.Child("comments").Child("-LOz2J7AEMS5MS4Ce2lf").OrderByKey().OnceAsync<Comment>();
-                        foreach (var i in comentarios)
-                        {
-                            string a = i.ToString();
-                        }
+                        SetFirebase();
+                        //var comentarios = await Firebase.Child("comments").Child("-LOz2J7AEMS5MS4Ce2lf").OrderByKey().OnceAsync<Comment>();
+
                         await NavigationService.NavigateToAsync<SelecaoDeInteressesViewModel>();
                     }
-                    else
-                        await DialogService.ShowMessage("Usuário não cadastrado", "Erro");
                 }
                 catch(Exception e)
                 {
-                    await DialogService.ShowMessage("Error", e.ToString());
+                    await DialogService.ShowMessage("Usuário ou Senha incorretos", "Erro");
                 }
             }
 
