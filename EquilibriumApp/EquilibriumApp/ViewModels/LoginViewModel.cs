@@ -70,7 +70,6 @@ namespace EquilibriumApp.ViewModels
         {
 
             Email = SettingsService.LembrarMe ? SettingsService.Email : "";
-            Password = SettingsService.LembrarMe ? SettingsService.Password : "";
             return base.InitializeAsync(navigationData);
         }
 
@@ -86,7 +85,6 @@ namespace EquilibriumApp.ViewModels
                     if (!string.IsNullOrEmpty(SettingsService.AccessToken))
                     {
                         SettingsService.Email = SettingsService.LembrarMe ? Email : null;
-                        SettingsService.Password = SettingsService.LembrarMe ? Password : null;
 
                         SetFirebase();
                         //var comentarios = await Firebase.Child("comments").Child("-LOz2J7AEMS5MS4Ce2lf").OrderByKey().OnceAsync<Comment>();

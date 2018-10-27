@@ -55,21 +55,6 @@ namespace EquilibriumApp.Services.Common
             }
         }
 
-        /// <summary>
-        /// Esta propriedade utilizará hashCode para armazenar a senha futuramente
-        /// </summary>
-        public string Password
-        {
-            get
-            {
-                return Preferences.Get(nameof(Password), null);
-            }
-            set
-            {
-                Preferences.Set(nameof(Password), value);
-            }
-        }
-
         public bool LembrarMe
         {
             get
