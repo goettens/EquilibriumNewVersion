@@ -1,4 +1,5 @@
-﻿using System.Threading.Tasks;
+﻿using System;
+using System.Threading.Tasks;
 using EquilibriumApp.Services.Common.Authentication;
 using Firebase.Auth;
 using Xamarin.Forms;
@@ -16,11 +17,17 @@ namespace EquilibriumApp.Droid.Services
             return token.Token;
         }
 
-        public async Task<string> CreateLogin(string email, string nome, string password, string confirmPassword)
+        public async Task<bool> CreateLogin(string email, string password)
         {
-            var user = await FirebaseAuth.Instance.CreateUserWithEmailAndPasswordAsync(email, password);
-            var token = await user.User.GetIdTokenAsync(false);
-            return token.Token;
+            try
+            {
+                var user = await FirebaseAuth.Instance.CreateUserWithEmailAndPasswordAsync(email, password);
+                return true;
+            }
+            catch
+            {
+                return false;
+            }            
         }
 
         public async Task<bool> ChangePassword(string email)

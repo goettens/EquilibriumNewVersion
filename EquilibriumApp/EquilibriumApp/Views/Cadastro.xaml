@@ -8,11 +8,12 @@
 
                 <Image Source="IconeOficial.png" Scale="0.7" HorizontalOptions="Center" VerticalOptions="Start"/>
                 <Label Text="Equilibrium App" HorizontalOptions="CenterAndExpand" FontAttributes="Bold" />
-                <Entry Placeholder="Nome" />
-                <Entry Placeholder="E-mail" Keyboard="Email" />
-                <Entry Placeholder="Senha" IsPassword="True"/>
-                <Entry Placeholder="Confirmar Senha" IsPassword="True" />
-                <Button Text="Cadastrar" BackgroundColor= "Orange" TextColor="White" FontAttributes="Bold" CornerRadius="15" VerticalOptions="Start"/>
+                <Entry Placeholder="Nome" Text="{Binding Name, Mode=TwoWay}" />
+                <Entry Placeholder="E-mail" Keyboard="Email" Text="{Binding Email, Mode=TwoWay}"/>
+                <Entry Placeholder="Senha" IsPassword="True" Text="{Binding Password, Mode=TwoWay}"/>
+                <Entry Placeholder="Confirmar Senha" IsPassword="True" Text="{Binding ConfirmPassword, Mode=TwoWay}"/>
+                <Label Text="{Binding Warning}" TextColor="Red" FontSize="Small" HorizontalOptions="Center"/>
+                <Button IsEnabled="{Binding CadastrarAtivo}" Command="{Binding CadastrarCommand}" Text="Cadastrar" BackgroundColor= "Orange" TextColor="White" FontAttributes="Bold" CornerRadius="15" VerticalOptions="Start"/>
             
             </StackLayout>
         </ScrollView>
