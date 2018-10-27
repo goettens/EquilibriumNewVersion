@@ -10,6 +10,7 @@ namespace EquilibriumApp.Services.Common
         string UserName { get; set; }
         string Email { get; set; }
         string DefaultAPIUrl { get; }
+        string IdUserAtual { get; set; }
         bool LembrarMe { get; set; }
     }
 }

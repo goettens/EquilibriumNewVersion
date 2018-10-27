@@ -5,6 +5,8 @@ using System.Threading.Tasks;
 using System.Windows.Input;
 using Xamarin.Forms;
 using Firebase.Database.Query;
+using System.Linq;
+using System.Collections.Generic;
 
 namespace EquilibriumApp.ViewModels
 {
@@ -70,6 +72,7 @@ namespace EquilibriumApp.ViewModels
         {
 
             Email = SettingsService.LembrarMe ? SettingsService.Email : "";
+            SettingsService.IdUserAtual = null;
             return base.InitializeAsync(navigationData);
         }
 
@@ -84,10 +87,20 @@ namespace EquilibriumApp.ViewModels
                     SettingsService.AccessToken = await auth.LoginWithEmailPassword(Email, Password);
                     if (!string.IsNullOrEmpty(SettingsService.AccessToken))
                     {
-                        SettingsService.Email = SettingsService.LembrarMe ? Email : null;
+                        SettingsService.Email = Email;
 
                         SetFirebase();
                         //var comentarios = await Firebase.Child("comments").Child("-LOz2J7AEMS5MS4Ce2lf").OrderByKey().OnceAsync<Comment>();
+
+                        var result = await Firebase.Child("users").OrderByKey().OnceAsync<User>();
+
+                        foreach(var user in result)
+                        {
+                            if(user.Object.Email == SettingsService.Email)
+                            {
+                                SettingsService.IdUserAtual = user.Key;
+                            }
+                        }
 
                         await NavigationService.NavigateToAsync<SelecaoDeInteressesViewModel>();
                     }
