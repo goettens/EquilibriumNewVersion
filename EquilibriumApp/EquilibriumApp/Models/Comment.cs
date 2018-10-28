@@ -4,7 +4,7 @@ using System.Text;
 
 namespace EquilibriumApp.Models
 {
-    class Comment
+    public class Comment
     {
         public string idComment { get; set; }
         public string idRecommendedActivity { get; set; }

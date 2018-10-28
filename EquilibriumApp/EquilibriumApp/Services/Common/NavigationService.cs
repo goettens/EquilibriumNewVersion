@@ -20,11 +20,7 @@ namespace EquilibriumApp.Services.Common
 
         public async Task InitializeAsync()
         {
-            
-            //if (SettingsService.AccessToken != null)
-            //    await NavigateToAsync<SelecaoDeInteressesViewModel>();
-            //else
-                await NavigateToAsync<LoginViewModel>();
+            await NavigateToAsync<LoginViewModel>();
         }
 
         public Task NavigateToAsync<TViewModel>() where TViewModel : BaseViewModel
