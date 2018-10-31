@@ -29,7 +29,7 @@
                                 <RowDefinition Height="20"/>
                             </Grid.RowDefinitions>
 
-                            <controls:CheckBox DefaultText="Corpo" Grid.Column="0" Grid.Row="0"/>
+                            <controls:CheckBox DefaultText="Saúde e Disposição" Checked="{Binding Saude, Mode=TwoWay}" Grid.Column="0" Grid.Row="0"/>
 
                             <Frame HorizontalOptions="EndAndExpand" Grid.Column="1" Grid.Row="0" Padding="0" Margin="0" BackgroundColor="Transparent">
                                 <Frame.GestureRecognizers>
@@ -44,7 +44,7 @@
                                 <Image Source="icon512" WidthRequest="20" HeightRequest="20" Aspect="AspectFill"/>
                             </Frame>
 
-                            <controls:CheckBox DefaultText="Conhecimento" Grid.Column="0" Grid.Row="1"/>
+                            <controls:CheckBox DefaultText="Desenvolvimento Intelectual" Checked="{Binding Desenvolvimento, Mode=TwoWay}" Grid.Column="0" Grid.Row="1"/>
                             <Frame HorizontalOptions="EndAndExpand" Grid.Column="1" Grid.Row="1" Padding="0" Margin="0" BackgroundColor="Transparent">
                                 <Frame.GestureRecognizers>
                                     <TapGestureRecognizer Tapped="Alert"/>
@@ -58,7 +58,7 @@
                                 <Image Source="icon512" WidthRequest="20" HeightRequest="20" Aspect="AspectFill"/>
                             </Frame>
 
-                            <controls:CheckBox DefaultText="Emocional" Grid.Column="0" Grid.Row="2"/>
+                            <controls:CheckBox DefaultText="Equilibrio Emocional" Checked="{Binding Equilibrio, Mode=TwoWay}" Grid.Column="0" Grid.Row="2"/>
 
                             <Frame HorizontalOptions="EndAndExpand" Grid.Column="1" Grid.Row="2" Padding="0" Margin="0" BackgroundColor="Transparent">
                                 <Frame.GestureRecognizers>
@@ -92,8 +92,7 @@
                             <RowDefinition Height="20"/>
                         </Grid.RowDefinitions>
 
-                        <controls:CheckBox DefaultText="Dinheiro" Grid.Column="0" Grid.Row="0" />
-
+                        <controls:CheckBox DefaultText="Realização e Propósito Profissional" Checked="{Binding Realizacao, Mode=TwoWay}" Grid.Column="0" Grid.Row="0" />
                         <Frame HorizontalOptions="CenterAndExpand" Grid.Column="1" Grid.Row="0" Padding="0" Margin="0" BackgroundColor="Transparent">
                             <Frame.GestureRecognizers>
                                 <TapGestureRecognizer Tapped="Alert"/>
@@ -107,7 +106,7 @@
                             <Image Source="icon512" WidthRequest="20" HeightRequest="20" Aspect="AspectFill"/>
                         </Frame>
 
-                        <controls:CheckBox DefaultText="Trabalho" Grid.Column="0" Grid.Row="1"/>
+                        <controls:CheckBox DefaultText="Recursos Financeiros" Checked="{Binding Recursos, Mode=TwoWay}" Grid.Column="0" Grid.Row="1"/>
                         <Frame HorizontalOptions="CenterAndExpand" Grid.Column="1" Grid.Row="1" Padding="0" Margin="0" BackgroundColor="Transparent">
                             <Frame.GestureRecognizers>
                                 <TapGestureRecognizer Tapped="Alert"/>
@@ -121,7 +120,7 @@
                             <Image Source="icon512" WidthRequest="20" HeightRequest="20" Aspect="AspectFill"/>
                         </Frame>
 
-                        <controls:CheckBox DefaultText="Voluntariado" Grid.Column="0" Grid.Row="2"/>
+                        <controls:CheckBox DefaultText="Contribuição Social" Checked="{Binding Contribuicao, Mode=TwoWay}" Grid.Column="0" Grid.Row="2"/>
                         <Frame HorizontalOptions="CenterAndExpand" Grid.Column="1" Grid.Row="2" Padding="0" Margin="0" BackgroundColor="Transparent">
                             <Frame.GestureRecognizers>
                                 <TapGestureRecognizer Tapped="Alert"/>
@@ -152,7 +151,7 @@
                             <RowDefinition Height="20"/>
                         </Grid.RowDefinitions>
 
-                        <controls:CheckBox DefaultText="Família" Grid.Column="0" Grid.Row="0"/>
+                        <controls:CheckBox DefaultText="Relacionamento Familiar" Checked="{Binding RelacionamentoFamilia, Mode=TwoWay}" Grid.Column="0" Grid.Row="0"/>
                         <Frame HorizontalOptions="CenterAndExpand" Grid.Column="1" Grid.Row="0" Padding="0" Margin="0" BackgroundColor="Transparent">
                             <Frame.GestureRecognizers>
                                 <TapGestureRecognizer Tapped="Alert"/>
@@ -166,7 +165,7 @@
                             <Image Source="icon512" WidthRequest="20" HeightRequest="20" Aspect="AspectFill"/>
                         </Frame>
 
-                        <controls:CheckBox DefaultText="Amor" Grid.Column="0" Grid.Row="1"/>
+                        <controls:CheckBox DefaultText="Relacionamento Amoroso" Checked="{Binding RelacionamentoAmoroso, Mode=TwoWay}" Grid.Column="0" Grid.Row="1"/>
                         <Frame HorizontalOptions="CenterAndExpand" Grid.Column="1" Grid.Row="1" Padding="0" Margin="0" BackgroundColor="Transparent">
                             <Frame.GestureRecognizers>
                                 <TapGestureRecognizer Tapped="Alert"/>
@@ -180,7 +179,7 @@
                             <Image Source="icon512" WidthRequest="20" HeightRequest="20" Aspect="AspectFill"/>
                         </Frame>
 
-                        <controls:CheckBox DefaultText="Amigos" Grid.Column="0" Grid.Row="2"/>
+                        <controls:CheckBox DefaultText="Vida Social" Checked="{Binding VidaSocial, Mode=TwoWay}" Grid.Column="0" Grid.Row="2"/>
                         <Frame HorizontalOptions="CenterAndExpand" Grid.Column="1" Grid.Row="2" Padding="0" Margin="0" BackgroundColor="Transparent">
                             <Frame.GestureRecognizers>
                                 <TapGestureRecognizer Tapped="Alert"/>
@@ -210,7 +209,7 @@
                             <RowDefinition Height="20"/>
                         </Grid.RowDefinitions>
 
-                        <controls:CheckBox DefaultText="Diversão" Grid.Column="0" Grid.Row="0"/>
+                        <controls:CheckBox DefaultText="Criatividade, Diversão e Hobbies" Checked="{Binding Criatividade, Mode=TwoWay}" Grid.Column="0" Grid.Row="0"/>
                         <Frame HorizontalOptions="CenterAndExpand" Grid.Column="1" Grid.Row="0" Padding="0" Margin="0" BackgroundColor="Transparent">
                             <Frame.GestureRecognizers>
                                 <TapGestureRecognizer Tapped="Alert"/>
@@ -224,7 +223,7 @@
                             <Image Source="icon512" WidthRequest="20" HeightRequest="20" Aspect="AspectFill"/>
                         </Frame>
 
-                        <controls:CheckBox DefaultText="Espiritualidade" Grid.Column="0" Grid.Row="1"/>
+                        <controls:CheckBox DefaultText="Práticas Espirituais" Checked="{Binding Praticas, Mode=TwoWay}" Grid.Column="0" Grid.Row="1"/>
                         <Frame HorizontalOptions="CenterAndExpand" Grid.Column="1" Grid.Row="1" Padding="0" Margin="0" BackgroundColor="Transparent">
                             <Frame.GestureRecognizers>
                                 <TapGestureRecognizer Tapped="Alert"/>
@@ -238,7 +237,7 @@
                             <Image Source="icon512" WidthRequest="20" HeightRequest="20" Aspect="AspectFill"/>
                         </Frame>
 
-                        <controls:CheckBox DefaultText="Plenitude" Grid.Column="0" Grid.Row="2"/>
+                        <controls:CheckBox DefaultText="Plenitude e Felicidade" Checked="{Binding Plenitude, Mode=TwoWay}" Grid.Column="0" Grid.Row="2"/>
                         <Frame HorizontalOptions="CenterAndExpand" Grid.Column="1" Grid.Row="2" Padding="0" Margin="0" BackgroundColor="Transparent" >
                             <Frame.GestureRecognizers>
                                 <TapGestureRecognizer Tapped="Alert"/>
@@ -263,7 +262,7 @@
                         <Grid.RowDefinitions>
                             <RowDefinition/>
                         </Grid.RowDefinitions>
-                        <Button Text="Entrar" Clicked="Alert" BackgroundColor= "Orange" TextColor="White" FontAttributes="Bold" CornerRadius="15" Grid.Row="0" Grid.Column="1" VerticalOptions="EndAndExpand"/>
+                        <Button Text="Entrar" Command="{Binding SalvarCommand}" BackgroundColor= "Orange" TextColor="White" FontAttributes="Bold" CornerRadius="15" Grid.Row="0" Grid.Column="1" VerticalOptions="EndAndExpand"/>
                     </Grid>
                 </StackLayout>
             </StackLayout>

@@ -4,11 +4,13 @@ using System.Text;
 
 namespace EquilibriumApp.Models
 {
-    public class Categoria 
+
+    public class Subcategories
     {
         public string Id { get; set; }
-        public string Description { get; set; }
         public string Name { get; set; }
-        public List<Subcategories> Subs { get; set; }
+        public string Description { get; set; }
+        public string Enumerator { get; set; }
+
     }
 }

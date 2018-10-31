@@ -55,6 +55,18 @@ namespace EquilibriumApp.Services.Common
             }
         }
 
+        public string IdUserAtual
+        {
+            get
+            {
+                return Preferences.Get(nameof(IdUserAtual), null);
+            }
+            set
+            {
+                Preferences.Set(nameof(IdUserAtual), value);
+            }
+        }
+
         public bool LembrarMe
         {
             get
