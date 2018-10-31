@@ -102,6 +102,7 @@ namespace EquilibriumApp.ViewModels
                             }
                         }
 
+                        await SetAreasAsync();
 
                         await NavigationService.NavigateToAsync<SelecaoDeInteressesViewModel>();
                     }

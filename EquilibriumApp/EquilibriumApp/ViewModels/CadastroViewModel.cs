@@ -126,7 +126,7 @@ namespace EquilibriumApp.ViewModels
                         SetFirebase();
                         try
                         {
-                            var usuario = await Firebase.Child("users").PostAsync(new User(Name.ToUpper(), Email, 0, ""));
+                            var usuario = await Firebase.Child("users").PostAsync(new User(Email, 0, "", Name.ToUpper()));
                             SettingsService.AccessToken = null;
                             SettingsService.Email = null;
                             SettingsService.UserName = null;
