@@ -53,7 +53,7 @@
                                             <Label Text="-" HorizontalOptions="EndAndExpand"/>
                                             <Label Text="{Binding MaximumPrice}" HorizontalOptions="EndAndExpand"/>
                                         </StackLayout>
-                                        
+
                                     </StackLayout>
                                 </Frame>
                             </StackLayout>
@@ -62,4 +62,5 @@
                 </ListView.ItemTemplate>
             </ListView>
         </StackLayout>
+    </AbsoluteLayout>
 </ContentPage>

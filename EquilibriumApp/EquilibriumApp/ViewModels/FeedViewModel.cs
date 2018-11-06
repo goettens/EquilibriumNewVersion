@@ -38,6 +38,28 @@ namespace EquilibriumApp.ViewModels
 
         public override Task InitializeAsync(object navigationData)
         {
+            Atividades atv;
+            SetFirebase();
+            try
+            {
+                var result = await Firebase.Child("recommendedactivities").OrderByKey().OnceAsync<Atividades>();
+                foreach (var i in result)
+                {
+                    atv = new Atividades
+                    {
+                        
+                    };
+
+                }
+
+
+                SetCategorias(Usuario.EnumCategories);
+
+            }
+            catch (Exception ex)
+            {
+                await DialogService.ShowMessage(ex.ToString(), "error");
+            }
 
 
             return base.InitializeAsync(navigationData);
