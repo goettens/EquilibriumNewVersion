@@ -3,19 +3,14 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:behaviors="clr-namespace:EquilibriumApp.Behaviors"
              x:Class="EquilibriumApp.Views.Feed">
-    
-    <ContentPage.ToolbarItems>
-        <ToolbarItem Text="{Binding FiltroText}" Command="{Binding FiltrarCommand}">
-            <ToolbarItem.Order>
-                <OnPlatform x:TypeArguments="ToolbarItemOrder" Android="Secondary" />
-            </ToolbarItem.Order>
-        </ToolbarItem>
-    </ContentPage.ToolbarItems>
 
-    <AbsoluteLayout Style="{StaticResource AbsoluteContent}" BackgroundColor="Transparent">
+    <ContentPage.ToolbarItems>
+        <ToolbarItem Text="Filtrar" Command="{Binding FiltrarCommand}" Order="Secondary"/>
+    </ContentPage.ToolbarItems>
+    <AbsoluteLayout BackgroundColor="Transparent">
 
         <StackLayout AbsoluteLayout.LayoutFlags="All"
-                     AbsoluteLayout.LayoutBounds="0,0,1,1">
+                         AbsoluteLayout.LayoutBounds="0,0,1,1">
 
             <StackLayout IsVisible="{Binding FiltroVisivel}" Padding="10">
                 <SearchBar Text="{Binding FiltroSelecionado, Mode=TwoWay}" IsEnabled="{Binding FiltroVisivel}" HeightRequest="25"/>
@@ -25,11 +20,11 @@
             <Label Text="{Binding Atividades.Count, StringFormat='Total de atividades encontradas: {0}' }" />
 
             <ListView ItemsSource="{Binding Atividades}"
-                  HasUnevenRows="true"
-                  IsRefreshing="{Binding IsBusy, Mode=OneWay}"
-                  SelectedItem="{Binding AtividadeSelecionada, Mode=TwoWay}"
-                  CachingStrategy="RecycleElement"
-                  IsPullToRefreshEnabled="True" RefreshCommand="{Binding AtualizarConsulta}">
+                      HasUnevenRows="true"
+                      IsRefreshing="{Binding IsBusy, Mode=OneWay}"
+                      SelectedItem="{Binding AtividadeSelecionada, Mode=TwoWay}"
+                      CachingStrategy="RecycleElement"
+                      IsPullToRefreshEnabled="True" RefreshCommand="{Binding AtualizarConsulta}">
                 <ListView.Behaviors>
                     <behaviors:EventToCommandBehavior EventName="ItemTapped" Command="{Binding DetalharAtividadeCommand}" />
                 </ListView.Behaviors>

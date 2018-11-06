@@ -166,6 +166,15 @@ namespace EquilibriumApp.ViewModels
         public async Task Salvar()
         {
             await Firebase.Child("users").Child(SettingsService.IdUserAtual).Child("EnumCategories").PutAsync(NumCat);
+            try
+            {
+
+            await NavigationService.NavigateToAsync<FeedViewModel>();
+            }
+            catch(Exception ex)
+            {
+                await DialogService.ShowMessage(ex.ToString(), "erro");
+            }
         }
 
         /// <summary>

@@ -1,4 +1,5 @@
 ﻿using EquilibriumApp.Models;
+using Firebase.Database.Query;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -17,12 +18,41 @@ namespace EquilibriumApp.ViewModels
             Atividades = new ObservableCollection<Atividades>();
             AtividadesFiltradas = new ObservableCollection<Atividades>();
             DetalharAtividadeCommand = new Command(async () => await DetalharAtividade());
+            FiltroVisivel = false;
+            FiltrarCommand = new Command(() => FiltroVisivel = !FiltroVisivel );
         }
 
         public ObservableCollection<Atividades> Atividades { get; set; }
         public ObservableCollection<Atividades> AtividadesFiltradas {get; set;}
         public ICommand DetalharAtividadeCommand { get; set; }
+        public ICommand FiltrarCommand { get; set; }
 
+        #region Filtro
+        private bool filtroVisivel;
+        public bool FiltroVisivel
+        {
+            get
+            {
+                return filtroVisivel;
+            }
+            set
+            {
+                SetProperty(ref filtroVisivel, value, nameof(FiltroVisivel));
+            }
+        }
+        private string filtroSelecionado = "Filtrar";
+        public string FiltroSelecionado
+        {
+            get
+            {
+                return filtroSelecionado;
+            }
+            set
+            {
+                SetProperty(ref filtroSelecionado, value, nameof(FiltroSelecionado));
+            }
+        }
+        #endregion
         private Atividades atividadeSelecionada;
         public Atividades AtividadeSelecionada
         {
@@ -36,33 +66,37 @@ namespace EquilibriumApp.ViewModels
             }
         }
 
-        public override Task InitializeAsync(object navigationData)
+        public override async Task InitializeAsync(object navigationData)
         {
-            Atividades atv;
             SetFirebase();
             try
             {
                 var result = await Firebase.Child("recommendedactivities").OrderByKey().OnceAsync<Atividades>();
                 foreach (var i in result)
                 {
-                    atv = new Atividades
+                    Atividades.Add(new Atividades
                     {
-                        
-                    };
-
+                        Id = i.Key,
+                        EnumCategories = i.Object.EnumCategories,
+                        ImageURL = i.Object.ImageURL,
+                        Likes = i.Object.Likes,
+                        Link = i.Object.Link,
+                        LongDescription = i.Object.LongDescription,
+                        MaximumPrice = i.Object.MaximumPrice,
+                        MinimumPrice = i.Object.MinimumPrice,
+                        Name = i.Object.Name,
+                        ReportsCount = i.Object.ReportsCount
+                    });
                 }
-
-
-                SetCategorias(Usuario.EnumCategories);
-
             }
             catch (Exception ex)
             {
-                await DialogService.ShowMessage(ex.ToString(), "error");
+                await DialogService.ShowMessage("Não foi possível buscar atividades. Tente mais tarde", "error");
             }
 
+            AtividadesFiltradas = Atividades;
 
-            return base.InitializeAsync(navigationData);
+            await base.InitializeAsync(navigationData);
         }
 
 
