@@ -26,143 +26,160 @@ namespace EquilibriumApp.ViewModels
 
 
         private int numCat;
-        private int NumCat
+        public int NumCat
         {
             get { return numCat; }
-            set { SetProperty(ref numCat, value, nameof(NumCat));
+            set
+            {
+                SetProperty(ref numCat, value, nameof(NumCat));
                 string a = numCat.ToString();
             }
         }
 
         #region CATEGORIAS BOOLEAN
-        private bool saude;
+        private bool saude = false;
         public bool Saude
         {
             get { return saude; }
-            set {
-                saude = value;
+            set{
+                if ((saude && value) || (!saude && !value))
+                    return;
+                SetProperty(ref saude, value, nameof(Saude));
                 NumCat = value ? numCat + 1 : numCat - 1;
-                OnPropertyChanged(nameof(Saude));
             }
         }
 
-        private bool desenvolvimento;
+        private bool desenvolvimento = false;
         public bool Desenvolvimento
         {
             get { return desenvolvimento; }
             set {
-                desenvolvimento = value;
+                if ((desenvolvimento && value) || (!desenvolvimento && !value))
+                    return;
+                SetProperty(ref desenvolvimento, value, nameof(Desenvolvimento));
                 NumCat = value ? numCat + 2 : numCat - 2;
-                OnPropertyChanged(nameof(Desenvolvimento));
             }
         }
 
-        private bool equilibrio;
+        private bool equilibrio = false;
         public bool Equilibrio
         {
             get { return equilibrio; }
             set {
-                equilibrio = value;
+                if ((equilibrio && value) || (!equilibrio && !value))
+                    return;
+                SetProperty(ref equilibrio, value, nameof(Equilibrio));
                 NumCat = value ? numCat + 4 : numCat - 4;
-                OnPropertyChanged(nameof(Equilibrio));
             }
         }
 
-        private bool realizacao;
+        private bool realizacao = false;
         public bool Realizacao
         {
             get { return realizacao; }
             set {
-                realizacao = value;
+                if ((realizacao && value) || (!realizacao && !value))
+                    return;
+                SetProperty(ref realizacao, value, nameof(Realizacao));
                 NumCat = value ? numCat + 8 : numCat - 8;
-                OnPropertyChanged(nameof(Realizacao));
             }
         }
 
-        private bool recursos;
+        private bool recursos = false;
         public bool Recursos
         {
             get { return recursos; }
             set {
-                recursos = value;
+                if ((recursos && value) || (!recursos && !value))
+                    return;
+                SetProperty(ref recursos, value, nameof(Recursos));
                 NumCat = value ? numCat + 16 : numCat - 16;
-                OnPropertyChanged(nameof(Recursos));
             }
         }
 
-        private bool contribuicao;
+        private bool contribuicao = false;
         public bool Contribuicao
         {
             get { return contribuicao; }
             set {
-                contribuicao = value;
+                if ((contribuicao && value) || (!contribuicao && !value))
+                    return;
+                SetProperty(ref contribuicao, value, nameof(Contribuicao));
                 NumCat = value ? numCat + 32 : numCat - 32;
-                OnPropertyChanged(nameof(Contribuicao));
             }
         }
 
-        private bool relacionamentoFamila;
+        private bool relacionamentoFamila = false;
         public bool RelacionamentoFamilia
         {
             get { return relacionamentoFamila; }
             set {
-                relacionamentoFamila = value;
+                if ((relacionamentoFamila && value) || (!relacionamentoFamila && !value))
+                    return;
+                SetProperty(ref relacionamentoFamila, value, nameof(RelacionamentoFamilia));
                 NumCat = value ? numCat + 64 : numCat - 64;
-                OnPropertyChanged(nameof(RelacionamentoFamilia));
             }
         }
 
-        private bool relacionamentoAmoroso;
+        private bool relacionamentoAmoroso = false;
         public bool RelacionamentoAmoroso
         {
             get { return relacionamentoAmoroso; }
             set {
-                relacionamentoAmoroso = value;
+                if ((relacionamentoAmoroso && value) || (!relacionamentoAmoroso && !value))
+                    return;
+                SetProperty(ref relacionamentoAmoroso, value, nameof(RelacionamentoAmoroso));
                 NumCat = value ? numCat + 128 : numCat - 128;
-                OnPropertyChanged(nameof(RelacionamentoAmoroso));
             }
         }
 
-        private bool vidaSocial;
+        private bool vidaSocial = false;
         public bool VidaSocial
         {
             get { return vidaSocial; }
             set {
-                vidaSocial = value;
+                if ((vidaSocial && value) || (!vidaSocial && !value))
+                    return;
+                SetProperty(ref vidaSocial, value, nameof(VidaSocial));
                 NumCat = value ? numCat + 256 : numCat - 256;
-                OnPropertyChanged(nameof(VidaSocial));
             }
         }
 
-        private bool criatividade;
+        private bool criatividade = false;
         public bool Criatividade
         {
             get { return criatividade; }
+
             set {
-                criatividade = value;
+                if ((criatividade && value) || (!criatividade && !value))
+                    return;
+                SetProperty(ref criatividade, value, nameof(Criatividade));
                 NumCat = value ? numCat + 512 : numCat - 512;
-                OnPropertyChanged(nameof(Criatividade));
             }
         }
 
-        private bool praticas;
+        private bool praticas = false;
         public bool Praticas
         {
             get { return praticas; }
             set {
-                praticas = value;
+                if ((praticas && value) || (!praticas && !value))
+                    return;
+                SetProperty(ref praticas, value, nameof(Praticas));
                 NumCat = value ? NumCat + 1024 : NumCat - 1024;
-                OnPropertyChanged(nameof(Praticas));
             }
         }
 
-        private bool plenitude;
+        private bool plenitude = false;
         public bool Plenitude
         {
             get { return plenitude; }
-            set { plenitude = value;
+            set {
+                if ((plenitude && value) || (!plenitude && !value))
+                    return;
+
+                SetProperty(ref plenitude, value, nameof(Plenitude));
                 NumCat = value ? numCat + 2048 : numCat - 2048;
-                OnPropertyChanged(nameof(Plenitude));
             }
         }
 
