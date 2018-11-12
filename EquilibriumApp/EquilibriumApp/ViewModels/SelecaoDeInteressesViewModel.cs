@@ -26,10 +26,12 @@ namespace EquilibriumApp.ViewModels
 
 
         private int numCat;
-        public int NumCat
+        private int NumCat
         {
             get { return numCat; }
-            set { SetProperty(ref numCat, value, nameof(NumCat)); }
+            set { SetProperty(ref numCat, value, nameof(NumCat));
+                string a = numCat.ToString();
+            }
         }
 
         #region CATEGORIAS BOOLEAN
@@ -37,8 +39,10 @@ namespace EquilibriumApp.ViewModels
         public bool Saude
         {
             get { return saude; }
-            set { SetProperty(ref saude, value, nameof(Saude));
-                NumCat = value ? NumCat + 1 : NumCat - 1;
+            set {
+                saude = value;
+                NumCat = value ? numCat + 1 : numCat - 1;
+                OnPropertyChanged(nameof(Saude));
             }
         }
 
@@ -46,8 +50,10 @@ namespace EquilibriumApp.ViewModels
         public bool Desenvolvimento
         {
             get { return desenvolvimento; }
-            set { SetProperty(ref desenvolvimento, value, nameof(Desenvolvimento));
-                NumCat = value ? NumCat + 2 : NumCat - 2;
+            set {
+                desenvolvimento = value;
+                NumCat = value ? numCat + 2 : numCat - 2;
+                OnPropertyChanged(nameof(Desenvolvimento));
             }
         }
 
@@ -55,8 +61,10 @@ namespace EquilibriumApp.ViewModels
         public bool Equilibrio
         {
             get { return equilibrio; }
-            set { SetProperty(ref equilibrio, value, nameof(Equilibrio));
-                NumCat = value ? NumCat + 4 : NumCat - 4;
+            set {
+                equilibrio = value;
+                NumCat = value ? numCat + 4 : numCat - 4;
+                OnPropertyChanged(nameof(Equilibrio));
             }
         }
 
@@ -64,8 +72,10 @@ namespace EquilibriumApp.ViewModels
         public bool Realizacao
         {
             get { return realizacao; }
-            set { SetProperty(ref realizacao, value, nameof(Realizacao));
-                NumCat = value ? NumCat + 8 : NumCat - 8;
+            set {
+                realizacao = value;
+                NumCat = value ? numCat + 8 : numCat - 8;
+                OnPropertyChanged(nameof(Realizacao));
             }
         }
 
@@ -73,8 +83,10 @@ namespace EquilibriumApp.ViewModels
         public bool Recursos
         {
             get { return recursos; }
-            set { SetProperty(ref recursos, value, nameof(Recursos));
-                NumCat = value ? NumCat + 16 : NumCat - 16;
+            set {
+                recursos = value;
+                NumCat = value ? numCat + 16 : numCat - 16;
+                OnPropertyChanged(nameof(Recursos));
             }
         }
 
@@ -82,8 +94,10 @@ namespace EquilibriumApp.ViewModels
         public bool Contribuicao
         {
             get { return contribuicao; }
-            set { SetProperty(ref contribuicao, value, nameof(Contribuicao));
-                NumCat = contribuicao ? NumCat + 32 : NumCat - 32;
+            set {
+                contribuicao = value;
+                NumCat = value ? numCat + 32 : numCat - 32;
+                OnPropertyChanged(nameof(Contribuicao));
             }
         }
 
@@ -91,8 +105,10 @@ namespace EquilibriumApp.ViewModels
         public bool RelacionamentoFamilia
         {
             get { return relacionamentoFamila; }
-            set { SetProperty(ref relacionamentoFamila, value, nameof(RelacionamentoFamilia));
-                NumCat = value ? NumCat + 64 : NumCat - 64;
+            set {
+                relacionamentoFamila = value;
+                NumCat = value ? numCat + 64 : numCat - 64;
+                OnPropertyChanged(nameof(RelacionamentoFamilia));
             }
         }
 
@@ -100,8 +116,10 @@ namespace EquilibriumApp.ViewModels
         public bool RelacionamentoAmoroso
         {
             get { return relacionamentoAmoroso; }
-            set { SetProperty(ref relacionamentoAmoroso, value, nameof(RelacionamentoAmoroso));
-                NumCat = value ? NumCat + 128 : NumCat - 128;
+            set {
+                relacionamentoAmoroso = value;
+                NumCat = value ? numCat + 128 : numCat - 128;
+                OnPropertyChanged(nameof(RelacionamentoAmoroso));
             }
         }
 
@@ -109,8 +127,10 @@ namespace EquilibriumApp.ViewModels
         public bool VidaSocial
         {
             get { return vidaSocial; }
-            set { SetProperty(ref vidaSocial, value, nameof(VidaSocial));
-                NumCat = value ? NumCat + 256 : NumCat - 256;
+            set {
+                vidaSocial = value;
+                NumCat = value ? numCat + 256 : numCat - 256;
+                OnPropertyChanged(nameof(VidaSocial));
             }
         }
 
@@ -118,8 +138,10 @@ namespace EquilibriumApp.ViewModels
         public bool Criatividade
         {
             get { return criatividade; }
-            set { SetProperty(ref criatividade, value, nameof(Criatividade));
-                NumCat = value ? NumCat + 512 : NumCat - 512;
+            set {
+                criatividade = value;
+                NumCat = value ? numCat + 512 : numCat - 512;
+                OnPropertyChanged(nameof(Criatividade));
             }
         }
 
@@ -127,8 +149,10 @@ namespace EquilibriumApp.ViewModels
         public bool Praticas
         {
             get { return praticas; }
-            set { SetProperty(ref praticas, value, nameof(Praticas));
+            set {
+                praticas = value;
                 NumCat = value ? NumCat + 1024 : NumCat - 1024;
+                OnPropertyChanged(nameof(Praticas));
             }
         }
 
@@ -136,8 +160,9 @@ namespace EquilibriumApp.ViewModels
         public bool Plenitude
         {
             get { return plenitude; }
-            set { SetProperty(ref plenitude, value, nameof(Plenitude));
-                NumCat = value ? NumCat + 2048 : NumCat - 2048;
+            set { plenitude = value;
+                NumCat = value ? numCat + 2048 : numCat - 2048;
+                OnPropertyChanged(nameof(Plenitude));
             }
         }
 
@@ -152,6 +177,7 @@ namespace EquilibriumApp.ViewModels
                 foreach (var i in result)
                     Usuario = new User(i.Object.Email, i.Object.EnumCategories, i.Object.ImageURL, i.Object.Name);
 
+                NumCat = 0;
                 SetCategorias(Usuario.EnumCategories);
 
             }
@@ -159,8 +185,6 @@ namespace EquilibriumApp.ViewModels
             {
                await DialogService.ShowMessage(ex.ToString(), "error");
             }
-
-            await base.InitializeAsync(navigationData);
         }
 
         public async Task Salvar()
@@ -191,61 +215,73 @@ namespace EquilibriumApp.ViewModels
             {
                 Plenitude = true;
                 SetCategorias(Categorias - 2048);
+                return;
             }
             else if (Categorias >= 1024)
             {
                 Praticas = true;
                 SetCategorias(Categorias - 1024);
+                return;
             }
             else if (Categorias >= 512)
             {
                 Criatividade = true;
                 SetCategorias(Categorias - 512);
+                return;
             }
             else if (Categorias >= 256)
             {
                 VidaSocial = true;
                 SetCategorias(Categorias - 256);
+                return;
             }
             else if (Categorias >= 128)
             {
                 RelacionamentoAmoroso = true;
                 SetCategorias(Categorias - 128);
+                return;
             }
             else if (Categorias >= 64)
             {
                 RelacionamentoFamilia = true;
                 SetCategorias(Categorias - 64);
+                return;
             }
             else if (Categorias >= 32)
             {
                 Contribuicao = true;
                 SetCategorias(Categorias - 32);
+                return;
             }
             else if (Categorias >= 16)
             {
                 Recursos = true;
                 SetCategorias(Categorias - 16);
+                return;
             }
             else if (Categorias >= 8)
             {
                 Realizacao = true;
                 SetCategorias(Categorias - 8);
+                return;
             }
             else if (Categorias >= 4)
             {
                 Equilibrio = true;
                 SetCategorias(Categorias - 4);
+                return;
             }
             else if (Categorias >= 2)
             {
                 Desenvolvimento = true;
                 SetCategorias(Categorias - 2);
+                return;
             }
             else if (Categorias >= 1)
             {
                 Saude = true;
                 SetCategorias(Categorias - 1);
+                return;
             }
         }
     }

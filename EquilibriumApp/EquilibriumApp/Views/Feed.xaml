@@ -36,19 +36,20 @@
                                     <Image Source="{Binding ImageURL}" />
                                 </Frame>
                                 <Frame>
-                                    <StackLayout Orientation="Horizontal"  HorizontalOptions="FillAndExpand">
-                                        <Label Text="{Binding Name}" FontAttributes="Bold"/>
-                                    </StackLayout>
-                                </Frame>
-                                <Frame >
-                                    <StackLayout Padding="5">
-                                        <Label Text="{Binding LongDescription}" HorizontalOptions="CenterAndExpand" FontAttributes="Italic" />
-                                        <StackLayout Orientation="Horizontal">
-                                            <Label Text="{Binding MinimumPrice}" HorizontalOptions="EndAndExpand"/>
-                                            <Label Text="-" HorizontalOptions="EndAndExpand"/>
-                                            <Label Text="{Binding MaximumPrice}" HorizontalOptions="EndAndExpand"/>
+                                    <StackLayout>
+                                        <StackLayout Orientation="Horizontal"  HorizontalOptions="FillAndExpand">
+                                            <Label Text="{Binding Name}" FontAttributes="Bold" FontSize="Large" HorizontalOptions="CenterAndExpand"/>
                                         </StackLayout>
-
+                                        <StackLayout Padding="5">
+                                            <Label Text="{Binding LongDescription}" HorizontalOptions="StartAndExpand" FontAttributes="Italic" />
+                                            <StackLayout Orientation="Horizontal">
+                                                <Label Text="Preço entre R$: " />
+                                                <Label Text="{Binding MinimumPrice}" HorizontalOptions="EndAndExpand"/>
+                                                <Label Text="-" HorizontalOptions="EndAndExpand"/>
+                                                <Label Text="{Binding MaximumPrice}" HorizontalOptions="EndAndExpand"/>
+                                            </StackLayout>
+                                        </StackLayout>
+                                        <BoxView HeightRequest="2" BackgroundColor="Black"/>
                                     </StackLayout>
                                 </Frame>
                             </StackLayout>
