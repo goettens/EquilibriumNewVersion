@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Security.Cryptography;
 using System.Text;
+using EquilibriumApp.Models;
 using Xamarin.Essentials;
 
 namespace EquilibriumApp.Services.Common
@@ -76,6 +77,18 @@ namespace EquilibriumApp.Services.Common
             set
             {
                 Preferences.Set(nameof(LembrarMe), value);
+            }
+        }
+
+        public int EnumCategorias
+        {
+            get
+            {
+                return Preferences.Get(nameof(EnumCategorias), 0);
+            }
+            set
+            {
+                Preferences.Set(nameof(EnumCategorias), value);
             }
         }
     }

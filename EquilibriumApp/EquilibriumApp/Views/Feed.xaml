@@ -17,7 +17,7 @@
                 <BoxView HeightRequest="1" BackgroundColor="Black"/>
             </StackLayout>
 
-            <Label Text="{Binding Atividades.Count, StringFormat='Total de atividades encontradas: {0}' }" />
+            <Label Text="{Binding AtividadesFiltradas.Count, StringFormat='Total de atividades encontradas: {0}' }" />
 
             <ListView ItemsSource="{Binding AtividadesFiltradas}"
                       HasUnevenRows="true"

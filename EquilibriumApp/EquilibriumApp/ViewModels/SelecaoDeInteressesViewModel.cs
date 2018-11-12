@@ -191,9 +191,11 @@ namespace EquilibriumApp.ViewModels
             try
             {
                 var result = await Firebase.Child("users").OrderByKey().StartAt(SettingsService.IdUserAtual).LimitToFirst(1).OnceAsync<User>();
+
                 foreach (var i in result)
                     Usuario = new User(i.Object.Email, i.Object.EnumCategories, i.Object.ImageURL, i.Object.Name);
 
+                SettingsService.EnumCategorias = Usuario.EnumCategories;
                 NumCat = 0;
                 SetCategorias(Usuario.EnumCategories);
 
@@ -207,10 +209,11 @@ namespace EquilibriumApp.ViewModels
         public async Task Salvar()
         {
             await Firebase.Child("users").Child(SettingsService.IdUserAtual).Child("EnumCategories").PutAsync(NumCat);
+            SettingsService.EnumCategorias = NumCat;
             try
             {
 
-            await NavigationService.NavigateToAsync<FeedViewModel>();
+            await NavigationService.NavigateToAsync<FeedViewModel>(NumCat);
             }
             catch(Exception ex)
             {

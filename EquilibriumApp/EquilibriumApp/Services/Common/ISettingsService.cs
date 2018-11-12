@@ -1,4 +1,5 @@
-﻿using System;
+﻿using EquilibriumApp.Models;
+using System;
 using System.Collections.Generic;
 using System.Text;
 
@@ -12,5 +13,6 @@ namespace EquilibriumApp.Services.Common
         string DefaultAPIUrl { get; }
         string IdUserAtual { get; set; }
         bool LembrarMe { get; set; }
+        int EnumCategorias { get; set; }
     }
 }
