@@ -19,7 +19,7 @@
 
             <Label Text="{Binding Atividades.Count, StringFormat='Total de atividades encontradas: {0}' }" />
 
-            <ListView ItemsSource="{Binding Atividades}"
+            <ListView ItemsSource="{Binding AtividadesFiltradas}"
                       HasUnevenRows="true"
                       IsRefreshing="{Binding IsBusy, Mode=OneWay}"
                       SelectedItem="{Binding AtividadeSelecionada, Mode=TwoWay}"

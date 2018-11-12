@@ -1,12 +1,11 @@
 ﻿using EquilibriumApp.Models;
 using Firebase.Database.Query;
 using System;
-using System.Collections.Generic;
 using System.Collections.ObjectModel;
-using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Input;
 using Xamarin.Forms;
+using System.Linq;
 
 namespace EquilibriumApp.ViewModels
 {
@@ -40,7 +39,7 @@ namespace EquilibriumApp.ViewModels
                 SetProperty(ref filtroVisivel, value, nameof(FiltroVisivel));
             }
         }
-        private string filtroSelecionado = "Filtrar";
+        private string filtroSelecionado = "";
         public string FiltroSelecionado
         {
             get
@@ -50,6 +49,27 @@ namespace EquilibriumApp.ViewModels
             set
             {
                 SetProperty(ref filtroSelecionado, value, nameof(FiltroSelecionado));
+
+                if (string.IsNullOrEmpty(filtroSelecionado))
+                {
+                    AtividadesFiltradas.Clear();
+                    foreach(var i in Atividades)
+                    {
+                        AtividadesFiltradas.Add(i);
+                    }
+                }
+                else
+                {
+                    AtividadesFiltradas.Clear();
+
+                    var result = Atividades.Where(x => x.Name.Contains(filtroSelecionado));
+
+                    AtividadesFiltradas.Clear();
+                    foreach (var i in result)
+                    {
+                        AtividadesFiltradas.Add(i);
+                    }
+                }
             }
         }
         #endregion
@@ -94,7 +114,8 @@ namespace EquilibriumApp.ViewModels
                 await DialogService.ShowMessage("Não foi possível buscar atividades. Tente mais tarde", "error");
             }
 
-            AtividadesFiltradas = Atividades;
+            foreach (var i in Atividades)
+                AtividadesFiltradas.Add(i);
 
             await base.InitializeAsync(navigationData);
         }
