@@ -1,10 +1,11 @@
-﻿using System;
+﻿using EquilibriumApp.Classes;
+using System;
 using System.Collections.Generic;
 using System.Text;
 
 namespace EquilibriumApp.Models
 {
-    public class Atividades
+    public class Atividade
     {
         public string Id { get; set; }
         public string Name { get; set; }
@@ -15,6 +16,7 @@ namespace EquilibriumApp.Models
         public string ImageURL { get; set; }
         public int EnumCategories { get; set; }
         public int Likes { get; set; }
-        public int ReportsCount { get; set; }
+        public double ReportsCount { get; set; }
+        public ObservableRangeCollection<Comment> Comentarios { get; set; }
     }
 }

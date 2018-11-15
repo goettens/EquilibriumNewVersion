@@ -6,11 +6,10 @@ namespace EquilibriumApp.Models
 {
     public class Comment
     {
-        public string idComment { get; set; }
-        public string idRecommendedActivity { get; set; }
-        public string idUser { get; set; }
-        public string imageURL { get; set; }
-        public string userName { get; set; }
-        public string description { get; set; }
+        public string IdComment { get; set; }
+        public string IdRecommendedActivity { get; set; }
+        public string IdUser { get; set; }
+        public string UserName { get; set; }
+        public string Description { get; set; }
     }
 }
