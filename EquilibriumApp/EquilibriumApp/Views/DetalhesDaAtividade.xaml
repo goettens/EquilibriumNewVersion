@@ -30,6 +30,10 @@
                     </StackLayout>
                     <Slider Value="{Binding Avaliacao, Mode=TwoWay}" Maximum="10" Minimum="1" MaximumTrackColor="Red" MinimumTrackColor="Green"/>
                 </StackLayout>
+                <StackLayout Orientation="Horizontal">
+                    <Entry Placeholder="Faça um comentário." Text="{Binding ComentarioAtual, Mode=TwoWay}"/>
+                    <Button Text="Enviar" Command="{Binding EnviarCommand}"/>
+                </StackLayout>
                 <StackLayout Padding="15" VerticalOptions="CenterAndExpand">
                     <ListView ItemsSource="{Binding Atv.Comentarios}"
                               IsRefreshing="{Binding IsBusy, Mode=OneWay}"
