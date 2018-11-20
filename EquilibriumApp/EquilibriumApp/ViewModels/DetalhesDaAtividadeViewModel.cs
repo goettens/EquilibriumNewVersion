@@ -44,7 +44,6 @@ namespace EquilibriumApp.ViewModels
             Atv = navigationData as Atividade;
             if (Atv.Comentarios == null)
                 Atv.Comentarios = new ObservableRangeCollection<Comment>();
-            Atv.ReportsCount = Atv.ReportsCount * 2;
             SetFirebase();
             try
             {
@@ -60,6 +59,27 @@ namespace EquilibriumApp.ViewModels
                         IdRecommendedActivity = i.Object.IdRecommendedActivity
                     });
                 }
+                try
+                {
+                    var grade = await Firebase.Child("ratings").Child(Atv.Id).OrderByKey().EqualTo(SettingsService.IdUserAtual).LimitToFirst(1).OnceAsync<Ratting>();
+
+                    if (grade.Count != 0)
+                    {
+                        foreach (var i in grade)
+                            Avaliacao = i.Object.grade;
+                    }
+                    else
+                    {
+                        Avaliacao = 0;
+                        alterado = false;
+                    }
+                }
+                catch(Exception Ex)
+                {
+
+                }
+
+
             }
             catch(Exception Ex)
             {
@@ -69,42 +89,48 @@ namespace EquilibriumApp.ViewModels
             {
                 OnPropertyChanged(nameof(Atv));
                 OnPropertyChanged(nameof(Atv.Comentarios));
-                alterado = true;
+                OnPropertyChanged(nameof(Atv.ReportsCount));
             }
             await base.InitializeAsync(navigationData);
         }
 
         public async void UpdateInFirebase()
         {
-            try
+            if(alterado)
             {
-                var result = await Firebase.Child("ratings").Child(Atv.Id).OrderByKey().EqualTo(SettingsService.IdUserAtual).LimitToFirst(1).OnceAsync<Ratting>();
 
-                if (result.Count != 0)
+                try
                 {
-                    await Firebase.Child("ratings").Child(Atv.Id).Child(SettingsService.IdUserAtual).PatchAsync(new Ratting(){ grade = avaliacao });
+                    var result = await Firebase.Child("ratings").Child(Atv.Id).OrderByKey().EqualTo(SettingsService.IdUserAtual).LimitToFirst(1).OnceAsync<Ratting>();
+
+                    if (result.Count != 0)
+                    {
+                        await Firebase.Child("ratings").Child(Atv.Id).Child(SettingsService.IdUserAtual).PatchAsync(new Ratting(){ grade = avaliacao });
+                    }
+                    else
+                    {
+                        await Firebase.Child("ratings").Child(Atv.Id).Child(SettingsService.IdUserAtual).PatchAsync(new Ratting() { grade = avaliacao });
+                    }
+                    var grades = await Firebase.Child("ratings").Child(Atv.Id).OnceAsync<Ratting>();
+
+                    int sum = 0;
+                    foreach(var i in grades)
+                    {
+                        sum += i.Object.grade;
+                    }
+
+                    double rateFix = sum / grades.Count;
+
+                    Atv.ReportsCount = rateFix;
+
+                    OnPropertyChanged(nameof(Atv.ReportsCount));
+
+                    await Firebase.Child("recommendedactivities").Child(Atv.Id).Child("averageRating").PutAsync(rateFix);
                 }
-                else
+                catch (Exception Ex)
                 {
-                    await Firebase.Child("ratings").Child(Atv.Id).Child(SettingsService.IdUserAtual).PatchAsync(new Ratting() { grade = avaliacao });
+                    await DialogService.ShowMessage("Erro ao avaliar atividade", "Erro");
                 }
-                var grades = await Firebase.Child("ratings").Child(Atv.Id).OnceAsync<Ratting>();
-
-                int sum = 0;
-                foreach(var i in grades)
-                {
-                    sum += i.Object.grade;
-                }
-
-                double rateFix = sum / grades.Count;
-
-                Atv.ReportsCount = rateFix;
-
-                await Firebase.Child("recommendedactivities").Child(Atv.Id).Child("averageRating").PutAsync(rateFix);
-            }
-            catch (Exception Ex)
-            {
-                await DialogService.ShowMessage("Erro ao avaliar atividade", "Erro");
             }
         }
 
