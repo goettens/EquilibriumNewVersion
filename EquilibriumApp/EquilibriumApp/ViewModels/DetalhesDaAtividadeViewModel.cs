@@ -78,29 +78,29 @@ namespace EquilibriumApp.ViewModels
         {
             try
             {
-                var result = await Firebase.Child("ratings").Child(Atv.Id).OrderByKey().EqualTo(SettingsService.IdUserAtual).LimitToFirst(1).OnceAsync<int>();
-                if(result == null)
+                var result = await Firebase.Child("ratings").Child(Atv.Id).OrderByKey().EqualTo(SettingsService.IdUserAtual).LimitToFirst(1).OnceAsync<Ratting>();
+
+                if (result.Count != 0)
                 {
-                    await Firebase.Child("ratings").Child(Atv.Id).PostAsync(SettingsService.IdUserAtual);
-                    await Firebase.Child("ratings").Child(Atv.Id).Child(SettingsService.IdUserAtual).PostAsync(Avaliacao);
+                    await Firebase.Child("ratings").Child(Atv.Id).Child(SettingsService.IdUserAtual).PatchAsync(new Ratting(){ grade = avaliacao });
                 }
                 else
                 {
-                    await Firebase.Child("ratings").Child(Atv.Id).Child(SettingsService.IdUserAtual).PutAsync(Avaliacao);
+                    await Firebase.Child("ratings").Child(Atv.Id).Child(SettingsService.IdUserAtual).PatchAsync(new Ratting() { grade = avaliacao });
                 }
-                var grades = await Firebase.Child("ratings").Child(Atv.Id).OnceAsync<int>();
+                var grades = await Firebase.Child("ratings").Child(Atv.Id).OnceAsync<Ratting>();
 
                 int sum = 0;
                 foreach(var i in grades)
                 {
-                    sum += i.Object;
+                    sum += i.Object.grade;
                 }
 
                 double rateFix = sum / grades.Count;
 
                 Atv.ReportsCount = rateFix;
 
-                await Firebase.Child("comments").Child(Atv.Id).PutAsync<Atividade>(Atv);
+                await Firebase.Child("recommendedactivities").Child(Atv.Id).Child("averageRating").PutAsync(rateFix);
             }
             catch (Exception Ex)
             {
