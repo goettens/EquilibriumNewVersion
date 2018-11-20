@@ -16,6 +16,7 @@ namespace EquilibriumApp.ViewModels
         }
 
         public Atividade Atv { get; set; }
+        public string ComentarioAtual { get; set; }
 
         private bool alterado = false;
         private int avaliacao = 1;
@@ -33,6 +34,34 @@ namespace EquilibriumApp.ViewModels
             }
         }
 
+        public ICommand EnviarCommand => new Command(async () =>
+        {
+            if (!string.IsNullOrEmpty(ComentarioAtual))
+            {
+                try
+                {
+                    Comment comment = new Comment()
+                    {
+                        Description = ComentarioAtual,
+                        IdRecommendedActivity = Atv.Id,
+                        IdUser = SettingsService.IdUserAtual,
+                        UserName = SettingsService.UserName
+                    };
+                    var result = await Firebase.Child("comments").Child(Atv.Id).PostAsync(comment);
+
+                    comment.IdComment = result.Key;
+
+                    Atv.Comentarios.Add(comment);
+
+                    await Firebase.Child("comments").Child(Atv.Id).Child(comment.IdComment).PatchAsync(comment);
+                }
+                catch(Exception Ex)
+                {
+                    await DialogService.ShowMessage("Erro", "Erro ao comentar atividade");
+                }
+            
+            }
+        });
 
         public ICommand ClickCommand => new Command<string>((url) =>
         {

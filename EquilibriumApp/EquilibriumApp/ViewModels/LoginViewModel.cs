@@ -99,6 +99,8 @@ namespace EquilibriumApp.ViewModels
                             if(user.Object.Email == SettingsService.Email)
                             {
                                 SettingsService.IdUserAtual = user.Key;
+                                SettingsService.UserName = user.Object.Name;
+                                SettingsService.Email = user.Object.Email;
                             }
                         }
 
