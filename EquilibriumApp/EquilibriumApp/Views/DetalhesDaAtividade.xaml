@@ -1,0 +1,71 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="EquilibriumApp.Views.DetalhesDaAtividade">
+    <ContentPage.Content>
+        <ScrollView>
+            <StackLayout VerticalOptions="CenterAndExpand">
+                <StackLayout Padding="15" VerticalOptions="CenterAndExpand">
+                    <Image Source="{Binding Atv.ImageURL}" VerticalOptions="StartAndExpand" HorizontalOptions="CenterAndExpand" />
+                    <Label Text="{Binding Atv.Name}" FontAttributes="Bold"/>
+                    <Label Text="{Binding Atv.ReportsCoun}" HorizontalOptions="EndAndExpand"/>
+                </StackLayout>
+                <StackLayout Orientation="Horizontal" Padding="15" VerticalOptions="CenterAndExpand">
+                    <StackLayout>
+                        <Label Text="{Binding Atv.LongDescription}" FontAttributes="Italic"/>
+                    </StackLayout>
+                    <StackLayout Orientation="Horizontal" HorizontalOptions="EndAndExpand" WidthRequest="150">
+                        <Label Text="R$ " HorizontalOptions="EndAndExpand"/>
+                        <Label Text="{Binding Atv.MinimumPrice}" HorizontalOptions="EndAndExpand"/>
+                        <Label Text=" - R$ " HorizontalOptions="EndAndExpand"/>
+                        <Label Text="{Binding Atv.MaximumPrice}" HorizontalOptions="EndAndExpand"/>
+                    </StackLayout>
+                    <StackLayout>
+                        <Label Text="Avalie essa atividade:"/>
+                        <Slider Value="{Binding Avaliacao, Mode=TwoWay}" Maximum="10" Minimum="1" MaximumTrackColor="Red" MinimumTrackColor="Green"/>
+                    </StackLayout>
+                </StackLayout>
+                <StackLayout Padding="15" VerticalOptions="CenterAndExpand">
+                    <ListView ItemsSource="{Binding Atv.Comentarios}"
+                              IsRefreshing="{Binding IsBusy, Mode=OneWay}"
+                              RowHeight="120" HasUnevenRows="True">
+                        <ListView.ItemTemplate>
+                            <DataTemplate>
+                                <ViewCell>
+                                    <Grid>
+                                        <Grid.RowDefinitions>
+                                            <RowDefinition Height="*"/>
+                                            <RowDefinition Height="auto"/>
+                                        </Grid.RowDefinitions>
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition/>
+                                            <ColumnDefinition/>
+                                        </Grid.ColumnDefinitions>
+                                        <BoxView HeightRequest="1" BackgroundColor="Black" Grid.Column="0" Grid.Row="0" Grid.ColumnSpan="2"/>
+                                        <Label Text="{Binding UserName}" HorizontalOptions="Start" Grid.Column="0" Grid.Row="1"/>
+                                        <Label Text="{Binding Description}" HorizontalOptions="StartAndExpand" Grid.Column="1" Grid.Row="1"/>                                        
+                                    </Grid>
+                                </ViewCell>
+                            </DataTemplate>
+                        </ListView.ItemTemplate>
+                    </ListView>
+
+                    <Label  HorizontalOptions="Center"
+                            VerticalOptions="CenterAndExpand">
+                        <Label.FormattedText>
+                            <FormattedString>
+                                <Span Text="Mais informações: " />
+                                <Span Text="Clique Aqui"
+                                        TextColor="DarkRed">
+                                    <Span.GestureRecognizers>
+                                        <TapGestureRecognizer Command="{Binding ClickCommand}" CommandParameter="{Binding Atv.Link}"/>
+                                    </Span.GestureRecognizers>
+                                </Span>
+                            </FormattedString>
+                        </Label.FormattedText>
+                    </Label>
+                </StackLayout>
+            </StackLayout>
+        </ScrollView>
+    </ContentPage.Content>
+</ContentPage>

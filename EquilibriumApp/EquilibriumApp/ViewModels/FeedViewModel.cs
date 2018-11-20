@@ -16,17 +16,17 @@ namespace EquilibriumApp.ViewModels
         public FeedViewModel()
         {
             Title = "Feed";
-            Atividades = new ObservableRangeCollection<Atividades>();
-            AtividadesFiltradas = new ObservableRangeCollection<Atividades>();
-            TodasAtividades = new ObservableRangeCollection<Atividades>();
+            Atividades = new ObservableRangeCollection<Atividade>();
+            AtividadesFiltradas = new ObservableRangeCollection<Atividade>();
+            TodasAtividades = new ObservableRangeCollection<Atividade>();
             DetalharAtividadeCommand = new Command(async () => await DetalharAtividade());
             FiltroVisivel = false;
             FiltrarCommand = new Command(() => FiltroVisivel = !FiltroVisivel );
         }
 
-        public ObservableRangeCollection<Atividades> Atividades { get; set; }
-        public ObservableRangeCollection<Atividades> AtividadesFiltradas {get; set;}
-        public ObservableRangeCollection<Atividades> TodasAtividades { get; set;}
+        public ObservableRangeCollection<Atividade> Atividades { get; set; }
+        public ObservableRangeCollection<Atividade> AtividadesFiltradas {get; set;}
+        public ObservableRangeCollection<Atividade> TodasAtividades { get; set;}
 
         public ICommand DetalharAtividadeCommand { get; set; }
         public ICommand FiltrarCommand { get; set; }
@@ -72,8 +72,8 @@ namespace EquilibriumApp.ViewModels
             }
         }
         #endregion
-        private Atividades atividadeSelecionada;
-        public Atividades AtividadeSelecionada
+        private Atividade atividadeSelecionada;
+        public Atividade AtividadeSelecionada
         {
             get
             {
@@ -91,10 +91,10 @@ namespace EquilibriumApp.ViewModels
             SetFirebase();
             try
             {
-                var result = await Firebase.Child("recommendedactivities").OrderByKey().OnceAsync<Atividades>();
+                var result = await Firebase.Child("recommendedactivities").OrderByKey().OnceAsync<Atividade>();
                 foreach (var i in result)
                 {
-                    TodasAtividades.Add(new Atividades
+                    TodasAtividades.Add(new Atividade
                     {
                         Id = i.Key,
                         EnumCategories = i.Object.EnumCategories,
@@ -113,21 +113,24 @@ namespace EquilibriumApp.ViewModels
             {
                 await DialogService.ShowMessage("Não foi possível buscar atividades. Tente mais tarde", "error");
             }
+            finally
+            {
+                SetCategorias(SettingsService.EnumCategorias, TodasAtividades.ToList());
 
-            SetCategorias(SettingsService.EnumCategorias, TodasAtividades.ToList());
+                AtividadesFiltradas.AddRange(Atividades);
+                OnPropertyChanged(nameof(AtividadesFiltradas)); //Teste para o 'count' funcionar.
 
-            AtividadesFiltradas.AddRange(Atividades);
-
-            await base.InitializeAsync(navigationData);
+                await base.InitializeAsync(navigationData);
+            }
         }
 
 
         private async Task DetalharAtividade()
         {
-            await DialogService.ShowMessage("Em Desenvolvimento", "Aviso");
+            await NavigationService.NavigateToAsync<DetalhesDaAtividadeViewModel>(AtividadeSelecionada);
         }
 
-        public void SetCategorias(int Categorias, List<Atividades> TodasAtividades)
+        public void SetCategorias(int Categorias, List<Atividade> TodasAtividades)
         {
             if (Categorias == 0)
             {
