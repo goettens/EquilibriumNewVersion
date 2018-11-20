@@ -7,8 +7,10 @@
             <StackLayout VerticalOptions="CenterAndExpand">
                 <StackLayout Padding="15" VerticalOptions="CenterAndExpand">
                     <Image Source="{Binding Atv.ImageURL}" VerticalOptions="StartAndExpand" HorizontalOptions="CenterAndExpand" />
-                    <Label Text="{Binding Atv.Name}" FontAttributes="Bold"/>
-                    <Label Text="{Binding Atv.ReportsCoun}" HorizontalOptions="EndAndExpand"/>
+                    <StackLayout Orientation="Horizontal">
+                        <Label Text="{Binding Atv.Name}" FontAttributes="Bold"/>
+                        <Label Text="{Binding Atv.ReportsCount}" FontAttributes="Bold" HorizontalOptions="EndAndExpand"/>
+                    </StackLayout>
                 </StackLayout>
                 <StackLayout Orientation="Horizontal" Padding="15" VerticalOptions="CenterAndExpand">
                     <StackLayout>
@@ -20,10 +22,13 @@
                         <Label Text=" - R$ " HorizontalOptions="EndAndExpand"/>
                         <Label Text="{Binding Atv.MaximumPrice}" HorizontalOptions="EndAndExpand"/>
                     </StackLayout>
-                    <StackLayout>
+                </StackLayout>
+                <StackLayout Padding="15">
+                    <StackLayout Orientation="Horizontal">
                         <Label Text="Avalie essa atividade:"/>
-                        <Slider Value="{Binding Avaliacao, Mode=TwoWay}" Maximum="10" Minimum="1" MaximumTrackColor="Red" MinimumTrackColor="Green"/>
+                        <Label Text="{Binding Avaliacao}"/>
                     </StackLayout>
+                    <Slider Value="{Binding Avaliacao, Mode=TwoWay}" Maximum="10" Minimum="1" MaximumTrackColor="Red" MinimumTrackColor="Green"/>
                 </StackLayout>
                 <StackLayout Padding="15" VerticalOptions="CenterAndExpand">
                     <ListView ItemsSource="{Binding Atv.Comentarios}"
