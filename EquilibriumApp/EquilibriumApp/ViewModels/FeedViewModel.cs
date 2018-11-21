@@ -21,15 +21,22 @@ namespace EquilibriumApp.ViewModels
             TodasAtividades = new ObservableRangeCollection<Atividade>();
             DetalharAtividadeCommand = new Command(async () => await DetalharAtividade());
             FiltroVisivel = false;
-            FiltrarCommand = new Command(() => FiltroVisivel = !FiltroVisivel );
+            FiltrarCommand = new Command(() => FiltroVisivel = !FiltroVisivel);
         }
 
         public ObservableRangeCollection<Atividade> Atividades { get; set; }
-        public ObservableRangeCollection<Atividade> AtividadesFiltradas {get; set;}
-        public ObservableRangeCollection<Atividade> TodasAtividades { get; set;}
+        public ObservableRangeCollection<Atividade> AtividadesFiltradas { get; set; }
+        public ObservableRangeCollection<Atividade> TodasAtividades { get; set; }
 
         public ICommand DetalharAtividadeCommand { get; set; }
         public ICommand FiltrarCommand { get; set; }
+
+        public ICommand AdicionarAtv => new Command(async () =>
+        {
+            await NavigationService.NavigateToAsync<AdicionarViewModel>();
+        });
+
+
 
         #region Filtro
         private bool filtroVisivel;
