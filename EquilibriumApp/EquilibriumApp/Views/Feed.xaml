@@ -6,6 +6,7 @@
 
     <ContentPage.ToolbarItems>
         <ToolbarItem Text="Filtrar" Command="{Binding FiltrarCommand}" Order="Secondary"/>
+        <ToolbarItem Text="Add Atividade" Command="{Binding AdicionarAtv}" Order="Secondary"/>
     </ContentPage.ToolbarItems>
     <AbsoluteLayout BackgroundColor="Transparent">
 

@@ -76,6 +76,7 @@ namespace EquilibriumApp.ViewModels
             SetFirebase();
             try
             {
+                Atv.Comentarios.Clear();
                 var result = await Firebase.Child("comments").Child(Atv.Id).OnceAsync<Comment>();
                 foreach (var i in result)
                 {

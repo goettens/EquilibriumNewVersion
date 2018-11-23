@@ -97,7 +97,6 @@ namespace EquilibriumApp.Services.Common
             var navigationPage = Application.Current.MainPage as INavigation;
 
             await navigationPage.PopAsync();
-
         }
 
         public BaseViewModel PreviousPageViewModel

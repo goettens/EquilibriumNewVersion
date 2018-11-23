@@ -1,0 +1,263 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:controls="clr-namespace:XLabs.Forms.Controls;assembly=XLabs.Forms"
+             x:Class="EquilibriumApp.Views.Adicionar"
+             Title="{Binding Title}">
+    <ScrollView>
+        <StackLayout>
+            <Image Source="{Binding Image}" HeightRequest="150" WidthRequest="150"/>
+            <Button Command="{Binding SelecionarCommand}" Text="Selecionar Imagem"/>
+
+            <Entry Placeholder="Nome da Atividade" Text="{Binding Publicacao.Name, Mode=TwoWay}"/>
+            <Entry Placeholder="Valor Mínimo" Text="{Binding Publicacao.MinimumPrice, Mode=TwoWay}" Keyboard="Numeric"/>
+            <Entry Placeholder="Valor Máximo" Text="{Binding Publicacao.MaximumPrice, Mode=TwoWay}" Keyboard="Numeric"/>
+            <Entry Placeholder="Descrição" Text="{Binding Publicacao.LongDescription, Mode=TwoWay}"/>
+            <Entry Placeholder="Link da Web" Text="{Binding Publicacao.Link, Mode=TwoWay}"/>
+
+            <StackLayout>
+
+                <Label Text="Pessoal" HorizontalOptions="Start" FontSize="Medium"/>
+
+                <StackLayout Orientation="Horizontal">
+                    <Grid HorizontalOptions="FillAndExpand">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="20"/>
+                            <ColumnDefinition Width="20"/>
+                        </Grid.ColumnDefinitions>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="20"/>
+                            <RowDefinition Height="20"/>
+                            <RowDefinition Height="20"/>
+                        </Grid.RowDefinitions>
+
+                        <controls:CheckBox DefaultText="Saúde e Disposição" Checked="{Binding Saude, Mode=TwoWay}" Grid.Column="0" Grid.Row="0"/>
+
+                        <Frame HorizontalOptions="EndAndExpand" Grid.Column="1" Grid.Row="0" Padding="0" Margin="0" BackgroundColor="Transparent">
+                            <Frame.GestureRecognizers>
+                                <TapGestureRecognizer Tapped="Alert"/>
+                            </Frame.GestureRecognizers>
+                            <Image Source="body_sm" WidthRequest="20" HeightRequest="20" Aspect="AspectFill"/>
+                        </Frame>
+                        <Frame HorizontalOptions="EndAndExpand" Grid.Column="2" Grid.Row="0" Padding="0" Margin="0" BackgroundColor="Transparent">
+                            <Frame.GestureRecognizers>
+                                <TapGestureRecognizer Tapped="Alert"/>
+                            </Frame.GestureRecognizers>
+                            <Image Source="icon512" WidthRequest="20" HeightRequest="20" Aspect="AspectFill"/>
+                        </Frame>
+
+                        <controls:CheckBox DefaultText="Desenvolvimento Intelectual" Checked="{Binding Desenvolvimento, Mode=TwoWay}" Grid.Column="0" Grid.Row="1"/>
+                        <Frame HorizontalOptions="EndAndExpand" Grid.Column="1" Grid.Row="1" Padding="0" Margin="0" BackgroundColor="Transparent">
+                            <Frame.GestureRecognizers>
+                                <TapGestureRecognizer Tapped="Alert"/>
+                            </Frame.GestureRecognizers>
+                            <Image Source="knowledge_sm" WidthRequest="20" HeightRequest="20" Aspect="AspectFill"/>
+                        </Frame>
+                        <Frame HorizontalOptions="EndAndExpand" Grid.Column="2" Grid.Row="1" Padding="0" Margin="0" BackgroundColor="Transparent">
+                            <Frame.GestureRecognizers>
+                                <TapGestureRecognizer Tapped="Alert"/>
+                            </Frame.GestureRecognizers>
+                            <Image Source="icon512" WidthRequest="20" HeightRequest="20" Aspect="AspectFill"/>
+                        </Frame>
+
+                        <controls:CheckBox DefaultText="Equilibrio Emocional" Checked="{Binding Equilibrio, Mode=TwoWay}" Grid.Column="0" Grid.Row="2"/>
+
+                        <Frame HorizontalOptions="EndAndExpand" Grid.Column="1" Grid.Row="2" Padding="0" Margin="0" BackgroundColor="Transparent">
+                            <Frame.GestureRecognizers>
+                                <TapGestureRecognizer Tapped="Alert"/>
+                            </Frame.GestureRecognizers>
+                            <Image Source="emotional_sm" WidthRequest="20" HeightRequest="20" Aspect="AspectFill"/>
+                        </Frame>
+                        <Frame HorizontalOptions="EndAndExpand" Grid.Column="2" Grid.Row="2" Padding="0" Margin="0" BackgroundColor="Transparent">
+                            <Frame.GestureRecognizers>
+                                <TapGestureRecognizer Tapped="Alert"/>
+                            </Frame.GestureRecognizers>
+                            <Image Source="icon512" WidthRequest="20" HeightRequest="20" Aspect="AspectFill"/>
+                        </Frame>
+
+                    </Grid>
+                </StackLayout>
+            </StackLayout>
+            <StackLayout>
+
+                <Label Text="Profissional" HorizontalOptions="Start" FontSize="Medium"/>
+
+                <Grid HorizontalOptions="FillAndExpand">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="20"/>
+                        <ColumnDefinition Width="20"/>
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="20"/>
+                        <RowDefinition Height="20"/>
+                        <RowDefinition Height="20"/>
+                    </Grid.RowDefinitions>
+
+                    <controls:CheckBox DefaultText="Realização e Propósito Profissional" Checked="{Binding Realizacao, Mode=TwoWay}" Grid.Column="0" Grid.Row="0" />
+                    <Frame HorizontalOptions="CenterAndExpand" Grid.Column="1" Grid.Row="0" Padding="0" Margin="0" BackgroundColor="Transparent">
+                        <Frame.GestureRecognizers>
+                            <TapGestureRecognizer Tapped="Alert"/>
+                        </Frame.GestureRecognizers>
+                        <Image Source="money_sm" WidthRequest="20" HeightRequest="20" Aspect="AspectFill"/>
+                    </Frame>
+                    <Frame HorizontalOptions="CenterAndExpand" Grid.Column="2" Grid.Row="0" Padding="0" Margin="0" BackgroundColor="Transparent">
+                        <Frame.GestureRecognizers>
+                            <TapGestureRecognizer Tapped="Alert"/>
+                        </Frame.GestureRecognizers>
+                        <Image Source="icon512" WidthRequest="20" HeightRequest="20" Aspect="AspectFill"/>
+                    </Frame>
+
+                    <controls:CheckBox DefaultText="Recursos Financeiros" Checked="{Binding Recursos, Mode=TwoWay}" Grid.Column="0" Grid.Row="1"/>
+                    <Frame HorizontalOptions="CenterAndExpand" Grid.Column="1" Grid.Row="1" Padding="0" Margin="0" BackgroundColor="Transparent">
+                        <Frame.GestureRecognizers>
+                            <TapGestureRecognizer Tapped="Alert"/>
+                        </Frame.GestureRecognizers>
+                        <Image Source="volunteering_sm" WidthRequest="20" HeightRequest="20" Aspect="AspectFill"/>
+                    </Frame>
+                    <Frame HorizontalOptions="CenterAndExpand" Grid.Column="2" Grid.Row="1" Padding="0" Margin="0" BackgroundColor="Transparent">
+                        <Frame.GestureRecognizers>
+                            <TapGestureRecognizer Tapped="Alert"/>
+                        </Frame.GestureRecognizers>
+                        <Image Source="icon512" WidthRequest="20" HeightRequest="20" Aspect="AspectFill"/>
+                    </Frame>
+
+                    <controls:CheckBox DefaultText="Contribuição Social" Checked="{Binding Contribuicao, Mode=TwoWay}" Grid.Column="0" Grid.Row="2"/>
+                    <Frame HorizontalOptions="CenterAndExpand" Grid.Column="1" Grid.Row="2" Padding="0" Margin="0" BackgroundColor="Transparent">
+                        <Frame.GestureRecognizers>
+                            <TapGestureRecognizer Tapped="Alert"/>
+                        </Frame.GestureRecognizers>
+                        <Image Source="family_sm" WidthRequest="20" HeightRequest="20" Aspect="AspectFill"/>
+                    </Frame>
+                    <Frame HorizontalOptions="CenterAndExpand" Grid.Column="2" Grid.Row="2" Padding="0" Margin="0" BackgroundColor="Transparent">
+                        <Frame.GestureRecognizers>
+                            <TapGestureRecognizer Tapped="Alert"/>
+                        </Frame.GestureRecognizers>
+                        <Image Source="icon512" WidthRequest="20" HeightRequest="20" Aspect="AspectFill"/>
+                    </Frame>
+                </Grid>
+            </StackLayout>
+            <StackLayout>
+
+                <Label Text="Relacionamentos" HorizontalOptions="Start" FontSize="Medium"/>
+
+                <Grid HorizontalOptions="FillAndExpand">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="20"/>
+                        <ColumnDefinition Width="20"/>
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="20"/>
+                        <RowDefinition Height="20"/>
+                        <RowDefinition Height="20"/>
+                    </Grid.RowDefinitions>
+
+                    <controls:CheckBox DefaultText="Relacionamento Familiar" Checked="{Binding RelacionamentoFamilia, Mode=TwoWay}" Grid.Column="0" Grid.Row="0"/>
+                    <Frame HorizontalOptions="CenterAndExpand" Grid.Column="1" Grid.Row="0" Padding="0" Margin="0" BackgroundColor="Transparent">
+                        <Frame.GestureRecognizers>
+                            <TapGestureRecognizer Tapped="Alert"/>
+                        </Frame.GestureRecognizers>
+                        <Image Source="family_sm" WidthRequest="20" HeightRequest="20" Aspect="AspectFill"/>
+                    </Frame>
+                    <Frame HorizontalOptions="CenterAndExpand" Grid.Column="2" Grid.Row="0" Padding="0" Margin="0" BackgroundColor="Transparent">
+                        <Frame.GestureRecognizers>
+                            <TapGestureRecognizer Tapped="Alert"/>
+                        </Frame.GestureRecognizers>
+                        <Image Source="icon512" WidthRequest="20" HeightRequest="20" Aspect="AspectFill"/>
+                    </Frame>
+
+                    <controls:CheckBox DefaultText="Relacionamento Amoroso" Checked="{Binding RelacionamentoAmoroso, Mode=TwoWay}" Grid.Column="0" Grid.Row="1"/>
+                    <Frame HorizontalOptions="CenterAndExpand" Grid.Column="1" Grid.Row="1" Padding="0" Margin="0" BackgroundColor="Transparent">
+                        <Frame.GestureRecognizers>
+                            <TapGestureRecognizer Tapped="Alert"/>
+                        </Frame.GestureRecognizers>
+                        <Image Source="love_sm" WidthRequest="20" HeightRequest="20" Aspect="AspectFill"/>
+                    </Frame>
+                    <Frame HorizontalOptions="CenterAndExpand" Grid.Column="2" Grid.Row="1" Padding="0" Margin="0" BackgroundColor="Transparent">
+                        <Frame.GestureRecognizers>
+                            <TapGestureRecognizer Tapped="Alert"/>
+                        </Frame.GestureRecognizers>
+                        <Image Source="icon512" WidthRequest="20" HeightRequest="20" Aspect="AspectFill"/>
+                    </Frame>
+
+                    <controls:CheckBox DefaultText="Vida Social" Checked="{Binding VidaSocial, Mode=TwoWay}" Grid.Column="0" Grid.Row="2"/>
+                    <Frame HorizontalOptions="CenterAndExpand" Grid.Column="1" Grid.Row="2" Padding="0" Margin="0" BackgroundColor="Transparent">
+                        <Frame.GestureRecognizers>
+                            <TapGestureRecognizer Tapped="Alert"/>
+                        </Frame.GestureRecognizers>
+                        <Image Source="friends_sm" WidthRequest="20" HeightRequest="20" Aspect="AspectFill"/>
+                    </Frame>
+                    <Frame HorizontalOptions="CenterAndExpand" Grid.Column="2" Grid.Row="2" Padding="0" Margin="0" BackgroundColor="Transparent">
+                        <Frame.GestureRecognizers>
+                            <TapGestureRecognizer Tapped="Alert"/>
+                        </Frame.GestureRecognizers>
+                        <Image Source="icon512" WidthRequest="20" HeightRequest="20" Aspect="AspectFill"/>
+                    </Frame>
+                </Grid>
+            </StackLayout>
+            <StackLayout>
+                <Label Text="Qualidade de Vida" HorizontalOptions="Start" FontSize="Medium"/>
+
+                <Grid HorizontalOptions="FillAndExpand">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="20"/>
+                        <ColumnDefinition Width="20"/>
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="20"/>
+                        <RowDefinition Height="20"/>
+                        <RowDefinition Height="20"/>
+                    </Grid.RowDefinitions>
+
+                    <controls:CheckBox DefaultText="Criatividade, Diversão e Hobbies" Checked="{Binding Criatividade, Mode=TwoWay}" Grid.Column="0" Grid.Row="0"/>
+                    <Frame HorizontalOptions="CenterAndExpand" Grid.Column="1" Grid.Row="0" Padding="0" Margin="0" BackgroundColor="Transparent">
+                        <Frame.GestureRecognizers>
+                            <TapGestureRecognizer Tapped="Alert"/>
+                        </Frame.GestureRecognizers>
+                        <Image Source="fun_sm" WidthRequest="20" HeightRequest="20" Aspect="AspectFill"/>
+                    </Frame>
+                    <Frame HorizontalOptions="CenterAndExpand" Grid.Column="2" Grid.Row="0" Padding="0" Margin="0" BackgroundColor="Transparent">
+                        <Frame.GestureRecognizers>
+                            <TapGestureRecognizer Tapped="Alert"/>
+                        </Frame.GestureRecognizers>
+                        <Image Source="icon512" WidthRequest="20" HeightRequest="20" Aspect="AspectFill"/>
+                    </Frame>
+
+                    <controls:CheckBox DefaultText="Práticas Espirituais" Checked="{Binding Praticas, Mode=TwoWay}" Grid.Column="0" Grid.Row="1"/>
+                    <Frame HorizontalOptions="CenterAndExpand" Grid.Column="1" Grid.Row="1" Padding="0" Margin="0" BackgroundColor="Transparent">
+                        <Frame.GestureRecognizers>
+                            <TapGestureRecognizer Tapped="Alert"/>
+                        </Frame.GestureRecognizers>
+                        <Image Source="spirituality_sm" WidthRequest="20" HeightRequest="20" Aspect="AspectFill"/>
+                    </Frame>
+                    <Frame HorizontalOptions="CenterAndExpand" Grid.Column="2" Grid.Row="1" Padding="0" Margin="0" BackgroundColor="Transparent">
+                        <Frame.GestureRecognizers>
+                            <TapGestureRecognizer Tapped="Alert"/>
+                        </Frame.GestureRecognizers>
+                        <Image Source="icon512" WidthRequest="20" HeightRequest="20" Aspect="AspectFill"/>
+                    </Frame>
+
+                    <controls:CheckBox DefaultText="Plenitude e Felicidade" Checked="{Binding Plenitude, Mode=TwoWay}" Grid.Column="0" Grid.Row="2"/>
+                    <Frame HorizontalOptions="CenterAndExpand" Grid.Column="1" Grid.Row="2" Padding="0" Margin="0" BackgroundColor="Transparent" >
+                        <Frame.GestureRecognizers>
+                            <TapGestureRecognizer Tapped="Alert"/>
+                        </Frame.GestureRecognizers>
+                        <Image Source="welfare_sm" Aspect="AspectFill"/>
+                    </Frame>
+                    <Frame HorizontalOptions="CenterAndExpand" Grid.Column="2" Grid.Row="2" Padding="0" Margin="0" BackgroundColor="Transparent">
+                        <Frame.GestureRecognizers>
+                            <TapGestureRecognizer Tapped="Alert"/>
+                        </Frame.GestureRecognizers>
+                        <Image Source="icon512"/>
+                    </Frame>
+                </Grid>
+            </StackLayout>
+
+            <Button Command="{Binding PublicarCommand}" Text="Publicar"/>
+
+        </StackLayout>
+    </ScrollView>
+</ContentPage>
