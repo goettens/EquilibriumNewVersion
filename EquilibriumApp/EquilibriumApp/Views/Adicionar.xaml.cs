@@ -16,5 +16,10 @@ namespace EquilibriumApp.Views
 		{
 			InitializeComponent ();
 		}
-	}
+
+        private async void Alert(object sender, EventArgs args)
+        {
+            await DisplayAlert("Teste Sucess", "Sucesso", "Ok");
+        }
+    }
 }
